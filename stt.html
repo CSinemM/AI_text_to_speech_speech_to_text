@@ -20,65 +20,29 @@
     </nav>
 
     <div class="page-header">
-      <p class="page-header-eyebrow">02 — STT &middot; Слушане</p>
+      <p class="page-header-eyebrow">02 — STT</p>
       <h1 class="page-header-title">Speech-to-Text</h1>
       <p class="page-header-desc">
-        Как ИИ преобразува говорима реч в текст — акустични модели, фонемно
-        разпознаване и невронни мрежи.
+        Speech-to-Text (STT) е технология, която използва изкуствен интелект, за
+        да преобразува говор в текст автоматично.
       </p>
     </div>
 
     <section class="section">
       <div class="section-header">
         <span class="section-number">01 —</span>
-        <h2 class="section-title">STT Pipeline</h2>
+        <h2 class="section-title">Какво е Speech-to-Text?</h2>
       </div>
       <p class="section-intro">
-        Вашият уводен текст тук. Обяснете накратко целия процес от звукова вълна
-        до финален текст.
+        Speech-to-Text (наричано още автоматично разпознаване на реч или ASR)
+        превръща говоримите думи в писмен текст с помощта на дълбоки невронни
+        мрежи.
       </p>
-      <div class="pipeline-columns" style="grid-template-columns: 1fr">
-        <div class="pipeline-col pipeline-col-last">
-          <p class="pipeline-col-label">// STT Pipeline — Глас → Текст</p>
-          <div class="pipeline-steps">
-            <div class="pipeline-step">
-              <span class="step-num">1</span>
-              <p class="step-text">
-                <strong>Аудио вход</strong> — микрофонът записва звуковата вълна
-                и я дигитализира в цифров сигнал.
-              </p>
-            </div>
-            <div class="pipeline-step">
-              <span class="step-num">2</span>
-              <p class="step-text">
-                <strong>Feature extraction</strong> — MFCC (Mel-Frequency
-                Cepstral Coefficients) анализ на сигнала.
-              </p>
-            </div>
-            <div class="pipeline-step">
-              <span class="step-num">3</span>
-              <p class="step-text">
-                <strong>Акустичен модел</strong> — невронна мрежа разпознава
-                фонеми и звукови единици.
-              </p>
-            </div>
-            <div class="pipeline-step">
-              <span class="step-num">4</span>
-              <p class="step-text">
-                <strong>Езиков модел</strong> — трансформира фонемите в думи и
-                генерира финален текстов изход.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div class="info-box">
-        <p class="info-box-label">// Бележка от изследователя</p>
+        <p class="info-box-label">// Основни факти</p>
         <p class="info-box-text">
-          Тук можете да добавите допълнителен текст, цитат или важна бележка
-          свързана с темата. Например разликата между стари HMM-базирани системи
-          и съвременните end-to-end невронни подходи.
+          Тази технология може да работи в реално време и се използва за
+          автоматична транскрипция на разговори, срещи, диктовки и други
         </p>
       </div>
     </section>
@@ -86,36 +50,59 @@
     <section class="section">
       <div class="section-header">
         <span class="section-number">02 —</span>
-        <h2 class="section-title">Акустични модели</h2>
+        <h2 class="section-title">Как работи Speech-to-Text?</h2>
       </div>
       <p class="section-intro">
-        Вашият изследователски текст тук. Обяснете акустичните модели — от
-        Hidden Markov Models до съвременните Transformer-базирани архитектури.
+        STT системите преминават през няколко етапа, за да превърнат звука в
+        текст — от почистване на аудиото до разпознаване на модели и контекст.
       </p>
-      <div class="info-box">
-        <p class="info-box-label">// Изследователски текст</p>
-        <p class="info-box-text">
-          Добавете вашия собствен анализ тук. Какви са предимствата на
-          невронните акустични модели пред класическите? Как се обучават? Какви
-          данни са нужни?
-        </p>
+      <div class="pipeline-columns" style="grid-template-columns: 1fr">
+        <div class="pipeline-col pipeline-col-last">
+          <p class="pipeline-col-label">// Основни стъпки в STT</p>
+          <div class="pipeline-steps">
+            <div class="pipeline-step">
+              <span class="step-num">1</span>
+              <p class="step-text">
+                <strong>Почистване на аудио</strong> — шумопотискане и
+                нормализиране на звука за по-добра точност.
+              </p>
+            </div>
+
+            <div class="pipeline-step">
+              <span class="step-num">2</span>
+              <p class="step-text">
+                <strong>Анализ на речеви модели</strong> — идентифициране на
+                звукови шаблони и връзката им с вероятни думи.
+              </p>
+            </div>
+
+            <div class="pipeline-step">
+              <span class="step-num">3</span>
+              <p class="step-text">
+                <strong>Езиков контекст</strong> — езиков модел избира
+                най-логичния текст на база на контекста и граматиката.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="section">
       <div class="section-header">
         <span class="section-number">03 —</span>
-        <h2 class="section-title">Езикови модели в STT</h2>
+        <h2 class="section-title">Защо е важно STT?</h2>
       </div>
       <p class="section-intro">
-        Вашият изследователски текст тук. Обяснете ролята на езиковия модел —
-        как превръща акустичния изход в смислен текст.
+        Speech-to-Text има широко приложение — от медицински диктовки до
+        автоматизирани анализи на разговори и създаване на търсими текстови
+        данни от аудио. :contentReference[oaicite:8]{index=8}
       </p>
       <div class="info-box">
-        <p class="info-box-label">// Изследователски текст</p>
+        <p class="info-box-label">// Примери за употреба</p>
         <p class="info-box-text">
-          Добавете вашия анализ за езиковите модели. N-gram модели, невронни LM,
-          beam search декодиране и как контекстът подобрява точността.
+          Технологията улеснява записването на бележки, прави разговорите
+          търсими и позволява анализ на съдържание в реално време.
         </p>
       </div>
     </section>
