@@ -183,6 +183,7 @@ strong {
     gap: 12px;
     align-items: center;
     margin-top: 0.5rem;
+    font-family:'italian';
 }
 
 .btn {
@@ -274,11 +275,12 @@ strong {
     align-items: center;
     justify-content: space-between;
     padding: 1rem 1.6rem;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 600;
     color: var(--black);
     border-right: 1px solid var(--black);
     transition: background-color 0.15s, color 0.15s;
+    font-family:'italian';
 }
 
 .quicklink-item:last-child {
