@@ -84,7 +84,6 @@ strong {
     color: var(--black);
 }
 
-/* FIXED NAV LINKS */
 .navbar-links {
     display: flex;
     list-style: none;
@@ -92,7 +91,7 @@ strong {
     align-items: center;
 }
 
-/* ===== FANCY BUTTON ===== */
+
 .fancy {
     background-color: transparent;
     border: 2px solid var(--black);
@@ -105,13 +104,14 @@ strong {
     position: relative;
     text-transform: uppercase;
     transition: all 0.3s ease-in-out;
-    font-size: 12px;
+    font-family:'italian';
+    font-size: 10px;
     text-decoration: none;
 }
 
 .fancy::before {
     content: "";
-    width: 22px;
+    width: 12px;
     height: 2px;
     background: var(--black);
     top: 50%;
