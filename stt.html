@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="bg">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Изкуствен интелект<</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="index.html" class="navbar-logo">Изкуствен интелект</a>
+      <ul class="navbar-links">
+        <li><a href="index.html">Начало</a></li>
+        <li><a href="stt.html">Speech-to-Text</a></li>
+        <li><a href="tts.html">Text-to-Speech</a></li>
+        <li><a href="models.html">Модели</a></li>
+        <li><a href="applications.html">Приложения</a></li>
+        <li><a href="sources.html">Източници</a></li>
+      </ul>
+    </nav>
+
+    <div class="page-header">
+      <p class="page-header-eyebrow">02 — STT &middot; Слушане</p>
+      <h1 class="page-header-title">Speech-to-Text</h1>
+      <p class="page-header-desc">
+        Как ИИ преобразува говорима реч в текст — акустични модели, фонемно
+        разпознаване и невронни мрежи.
+      </p>
+    </div>
+
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">01 —</span>
+        <h2 class="section-title">STT Pipeline</h2>
+      </div>
+      <p class="section-intro">
+        Вашият уводен текст тук. Обяснете накратко целия процес от звукова вълна
+        до финален текст.
+      </p>
+      <div class="pipeline-columns" style="grid-template-columns: 1fr">
+        <div class="pipeline-col pipeline-col-last">
+          <p class="pipeline-col-label">// STT Pipeline — Глас → Текст</p>
+          <div class="pipeline-steps">
+            <div class="pipeline-step">
+              <span class="step-num">1</span>
+              <p class="step-text">
+                <strong>Аудио вход</strong> — микрофонът записва звуковата вълна
+                и я дигитализира в цифров сигнал.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">2</span>
+              <p class="step-text">
+                <strong>Feature extraction</strong> — MFCC (Mel-Frequency
+                Cepstral Coefficients) анализ на сигнала.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">3</span>
+              <p class="step-text">
+                <strong>Акустичен модел</strong> — невронна мрежа разпознава
+                фонеми и звукови единици.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">4</span>
+              <p class="step-text">
+                <strong>Езиков модел</strong> — трансформира фонемите в думи и
+                генерира финален текстов изход.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <p class="info-box-label">// Бележка от изследователя</p>
+        <p class="info-box-text">
+          Тук можете да добавите допълнителен текст, цитат или важна бележка
+          свързана с темата. Например разликата между стари HMM-базирани системи
+          и съвременните end-to-end невронни подходи.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">02 —</span>
+        <h2 class="section-title">Акустични модели</h2>
+      </div>
+      <p class="section-intro">
+        Вашият изследователски текст тук. Обяснете акустичните модели — от
+        Hidden Markov Models до съвременните Transformer-базирани архитектури.
+      </p>
+      <div class="info-box">
+        <p class="info-box-label">// Изследователски текст</p>
+        <p class="info-box-text">
+          Добавете вашия собствен анализ тук. Какви са предимствата на
+          невронните акустични модели пред класическите? Как се обучават? Какви
+          данни са нужни?
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">03 —</span>
+        <h2 class="section-title">Езикови модели в STT</h2>
+      </div>
+      <p class="section-intro">
+        Вашият изследователски текст тук. Обяснете ролята на езиковия модел —
+        как превръща акустичния изход в смислен текст.
+      </p>
+      <div class="info-box">
+        <p class="info-box-label">// Изследователски текст</p>
+        <p class="info-box-text">
+          Добавете вашия анализ за езиковите модели. N-gram модели, невронни LM,
+          beam search декодиране и как контекстът подобрява точността.
+        </p>
+      </div>
+    </section>
+
+    <div class="quicklinks-section">
+      <p class="quicklinks-label">Продължи към</p>
+      <div class="quicklinks-grid">
+        <a href="tts.html" class="quicklink-item"
+          >Text-to-Speech <span class="arrow">→</span></a
+        >
+        <a href="models.html" class="quicklink-item"
+          >AI Модели <span class="arrow">↗</span></a
+        >
+        <a href="applications.html" class="quicklink-item"
+          >Приложения <span class="arrow">↗</span></a
+        >
+        <a href="sources.html" class="quicklink-item"
+          >Източници <span class="arrow">↗</span></a
+        >
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-left">
+        <p class="footer-logo">VoiceAI Research</p>
+        <p class="footer-tagline">
+          Speech-to-Text и Text-to-Speech: Как ИИ слуша и говори.<br />
+          Изследователски проект &middot; Клас 2025
+        </p>
+      </div>
+      <div class="footer-right">
+        <p class="footer-credit">Изследователски проект &middot; 2025</p>
+      </div>
+      <div class="footer-stripe"></div>
+    </footer>
+  </body>
+</html>

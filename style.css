@@ -137,3 +137,48 @@ strong {
 .hero-description strong {
     color: var(--black);
 }
+
+.quicklinks-section {
+    border-bottom: 2px solid var(--black);
+}
+
+.quicklinks-label {
+    padding: 0.6rem 2rem;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gray-muted);
+    border-bottom: 1px solid var(--border);
+}
+
+.quicklinks-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.quicklink-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.6rem;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--black);
+    border-right: 1px solid var(--black);
+    transition: background-color 0.15s, color 0.15s;
+}
+
+.quicklink-item:last-child {
+    border-right: none;
+}
+
+.quicklink-item:hover {
+    background-color: var(--black);
+    color: var(--cream);
+}
+
+.arrow {
+    font-size: 16px;
+}
+
