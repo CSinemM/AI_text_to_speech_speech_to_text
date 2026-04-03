@@ -5,7 +5,24 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Noteworthy';
+    src: url('noteworthy.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face{
+    font-family:'Italian';
+    src:url('italian.ttf') format('truetype');
+    font-weight: normal;
+    font-style:normal;
+}
+
+
+
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap');
+
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -64,38 +81,66 @@ strong {
 .navbar-logo {
     font-family: var(--font-display);
     font-size: 22px;
-    font-weight: 400;
-    letter-spacing: 0.5px;
     color: var(--black);
 }
 
+/* FIXED NAV LINKS */
 .navbar-links {
     display: flex;
     list-style: none;
-    gap: 0;
+    gap: 0.5rem;
+    align-items: center;
 }
 
-.navbar-links li a {
-    display: block;
-    padding: 0 1.3rem;
-    line-height: 54px;
-    font-size: 13px;
-    font-weight: 500;
+/* ===== FANCY BUTTON ===== */
+.fancy {
+    background-color: transparent;
+    border: 2px solid var(--black);
     color: var(--black);
-    border-left: 1px solid var(--border);
-    transition: background-color 0.15s, color 0.15s;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0.7em 1.2em;
+    position: relative;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    font-size: 12px;
+    text-decoration: none;
 }
 
-.navbar-links li:last-child a {
-    border-right: 1px solid var(--border);
+.fancy::before {
+    content: "";
+    width: 22px;
+    height: 2px;
+    background: var(--black);
+    top: 50%;
+    left: 0.8em;
+    position: absolute;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
 }
 
-.navbar-links li a:hover {
-    background-color: var(--black);
+.fancy .text {
+    padding-left: 1.8em;
+    display: block;
+}
+
+.fancy:hover {
+    background: var(--black);
     color: var(--cream);
 }
 
+.fancy:hover::before {
+    width: 12px;
+    background: var(--cream);
+}
 
+.fancy:hover .text {
+    color: var(--cream);
+}
+
+/* HERO */
 .hero {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -111,49 +156,17 @@ strong {
     border-right: 2px solid var(--black);
 }
 
-.hero-eyebrow {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gray-muted);
-    margin-bottom: 1.2rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.hero-eyebrow::before {
-    content: '';
-    display: inline-block;
-    width: 28px;
-    height: 2px;
-    background-color: var(--black);
-}
-
 .hero-title {
     font-family: var(--font-display);
-    font-size: clamp(42px, 6.5vw, 80px);
-    font-weight: 400;
-    line-height: 1.05;
-    letter-spacing: 0.5px;
+    font-size: 60px;
     color: var(--black);
-    margin-bottom: 1.4rem;
-}
-
-.hero-title em {
-    font-style: italic;
-    color: var(--gray-text);
 }
 
 .hero-description {
-    font-size: 15px;
+    font-size: 18px;
     color: var(--gray-text);
-    line-height: 1.75;
-    max-width: 400px;
-    margin-bottom: 2rem;
+    font-family: 'italian';
 }
-
 .hero-description strong {
     color: var(--black);
 }
@@ -301,11 +314,12 @@ strong {
 }
 
 .section-intro {
-    font-size: 15px;
+    font-size: 20px;
     color: var(--gray-text);
     line-height: 1.75;
     max-width: 600px;
     margin-bottom: 2rem;
+    font-family:'italian';
 }
 
 .topic-cards {
@@ -373,10 +387,11 @@ strong {
 }
 
 .topic-description {
-    font-size: 13px;
+    font-size: 15px;
     color: var(--gray-text);
     line-height: 1.65;
     margin-bottom: 1rem;
+    font-family:'italian';
 }
 
 .topic-link {
@@ -456,9 +471,10 @@ strong {
 }
 
 .step-text {
-    font-size: 13px;
+    font-size: 15px;
     color: var(--gray-text);
-    line-height: 1.5;
+    line-height: 1.5;   
+    font-family: 'italian';;
 }
 
 .step-text strong {
@@ -481,11 +497,11 @@ strong {
 }
 
 .info-box-text {
-    font-size: 20px;
+    font-size: 15px;
     color: var(--gray-text);
     line-height: 1.75;
     font-style: times new roman;
-    font-family: var(--font-display);
+    font-family: 'italian';
 }
 
 .models-table {
@@ -681,10 +697,11 @@ strong {
 }
 
 .page-header-desc {
-    font-size: 15px;
+    font-size: 20px;
     color: var(--gray-text);
     line-height: 1.75;
     max-width: 560px;
+    font-family:'italian';
 }
 
 .footer {
