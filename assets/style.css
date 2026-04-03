@@ -140,7 +140,10 @@ strong {
     color: var(--cream);
 }
 
-/* HERO */
+.navbar-links {
+    margin-left: auto;
+}
+
 .hero {
     display: grid;
     grid-template-columns: 1fr 1fr;
