@@ -163,21 +163,26 @@ strong {
     font-family: var(--font-display);
     font-size: 60px;
     color: var(--black);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
 }
 
 .hero-description {
     font-size: 18px;
     color: var(--gray-text);
     font-family: 'italian';
+    margin-top: 0;
+    margin-bottom: 1.5rem;
 }
 .hero-description strong {
-    color: var(--black);
+    color: var(--black);ription
 }
 
 .hero-buttons {
     display: flex;
     gap: 12px;
     align-items: center;
+    margin-top: 0.5rem;
 }
 
 .btn {
