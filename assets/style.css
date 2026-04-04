@@ -19,6 +19,13 @@
     font-style:normal;
 }
 
+@font-face{
+    font-family:'Pixelated';
+    src:url('pixelated.otf') format('truetype');
+    font-weight: normal;    
+    font-style:normal;
+}
+
 
 
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap');
@@ -160,8 +167,8 @@ strong {
 }
 
 .hero-title {
-    font-family: var(--font-display);
-    font-size: 60px;
+    font-family: 'Pixelated';
+    font-size: 30px;
     color: var(--black);
     line-height: 1.1;
     margin-bottom: 1.5rem;
