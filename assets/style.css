@@ -178,7 +178,7 @@ strong {
     font-size: 18px;
     color: var(--gray-text);
     font-family: 'italian';
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     margin-bottom: 1.5rem;
 }
 .hero-description strong {
@@ -695,13 +695,13 @@ strong {
     gap: 10px;
 }
 
-.page-header-eyebrow::before {
+/* .page-header-eyebrow::before {
     content: '';
     display: inline-block;
     width: 20px;
     height: 2px;
     background-color: var(--black);
-}
+} */
 
 .page-header-title {
     font-family: 'Pixelated';
