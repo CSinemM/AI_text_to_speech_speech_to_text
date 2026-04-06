@@ -841,3 +841,8 @@ strong {
         display: none;
     }
 }
+
+.steps_stt{
+    font-family: var(--font-display);
+    font-size: 24px;
+}
