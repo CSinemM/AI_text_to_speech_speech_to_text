@@ -9,7 +9,6 @@
   <body>
     <nav class="navbar">
       <a href="index.html" class="navbar-logo">Изкуствен интелект</a>
-
       <ul class="navbar-links">
         <li>
           <a class="fancy" href="index.html"
@@ -47,20 +46,146 @@
     <div class="page-header">
       <h1 class="page-header-title">Text-to-Speech</h1>
       <p class="page-header-desc">
-        Как ИИ синтезира естествено звучаща реч от текст — WaveNet, Tacotron и
-        мел-спектрограми.
+        Text-to-Speech (TTS), известен още като синтез на реч или гласов AI, е
+        технология, която преобразува писмен текст в говорим език — от WaveNet и
+        Tacotron до съвременните трансформърни архитектури.
       </p>
     </div>
 
+    <!-- SECTION 01: Какво е TTS -->
     <section class="section">
       <div class="section-header">
         <span class="section-number">01 —</span>
-        <h2 class="section-title">TTS Pipeline</h2>
+        <h2 class="section-title">Какво е Text-to-Speech?</h2>
       </div>
       <p class="section-intro">
-        Вашият уводен текст тук. Обяснете целия процес от текстов вход до
-        синтезирана реч.
+        Технологията за преобразуване на текст в реч дава възможност на
+        компютри, устройства и приложения да генерират реч с човешки гласове от
+        текстов вход.
       </p>
+      <div class="info-box">
+        <p class="info-box-label">// Основна дефиниция</p>
+        <p class="info-box-text">
+          TTS играе ключова роля за преодоляване на разликата между писмено
+          съдържание и слухова комуникация, правейки цифровата информация
+          по-достъпна, интерактивна и лесно смилаема. Гласовата технология
+          добавя допълнителен слой човечност към взаимодействията с AI, тъй като
+          е проектирана да имитира разговорни тонове — мощен инструмент за
+          автоматизация с по-топъл и по-човешки щрих.
+        </p>
+      </div>
+
+      <div class="info-box" style="margin-top: 1rem">
+        <p class="info-box-label">// TTS и изкуственият интелект</p>
+        <p class="info-box-text">
+          Да — системите за TTS разчитат на изкуствен интелект, машинно обучение
+          и невронни мрежи. AI преобразува въведения текст във времево
+          подравнени характеристики, предоставяйки гласов изход, имитиращ
+          характеристиките на човешката реч — включително естествени акценти,
+          стилове и речеви модели. TTS стана значително по-усъвършенстван
+          благодарение на AI, в сравнение с ранните дни, когато всичко звучеше
+          нечовешко и роботизирано.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 02: Кратка история -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">02 —</span>
+        <h2 class="section-title">Кратка история на TTS</h2>
+      </div>
+      <p class="section-intro">
+        Технологията за синтез на реч еволюира от строги, базирани на правила
+        системи до гъвкави, задвижвани от невронни мрежи модели, генериращи
+        почти човешка реч.
+      </p>
+
+      <div class="pipeline-columns" style="grid-template-columns: 1fr">
+        <div class="pipeline-col pipeline-col-last">
+          <p class="pipeline-col-label">// Ключови моменти в развитието</p>
+          <div class="pipeline-steps">
+            <div class="pipeline-step">
+              <span class="step-num">1960s</span>
+              <p class="step-text">
+                <strong>Правило-базирани системи:</strong> Ранните TTS системи
+                използват ръчно изградени правила и сигналообработващи
+                конвейери. Резултатът звучи изкуствено и роботизирано.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">1980–90s</span>
+              <p class="step-text">
+                <strong>Конкатенативен синтез:</strong> Системи като тази на
+                AT&amp;T Bell Labs залепват предварително записани кратки речеви
+                сегменти (дифони, трифони) за форматиране на думи. Изисква
+                огромен ръчен труд за сегментиране и маркиране на аудио.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">2000s</span>
+              <p class="step-text">
+                <strong>Статистически параметричен синтез:</strong> Използване
+                на статистически модели (HMM) за генериране на речеви параметри.
+                По-гъвкаво от конкатенативните системи, но все още изкуствено
+                звучане.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">2016</span>
+              <p class="step-text">
+                <strong>WaveNet от Google DeepMind:</strong> Революционен пробив
+                — дълбока генеративна невронна мрежа, генерираща необработени
+                аудио вълни (raw waveforms) директно, семпъл по семпъл. За пръв
+                път синтезираният глас е почти неразличим от човешки.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">2017</span>
+              <p class="step-text">
+                <strong>Tacotron от Google:</strong> End-to-end система на
+                базата на sequence-to-sequence архитектура. Приема текст и
+                директно генерира спектрограма на финалната реч — без нужда от
+                сложни лингвистични характеристики като вход.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">2018+</span>
+              <p class="step-text">
+                <strong>Tacotron 2, FastSpeech, VITS:</strong> Следващото
+                поколение модели постига резултати, сравними с професионални
+                записи (MOS 4.53 срещу 4.58 за студийни записи). FastSpeech
+                въвежда паралелно генериране — значително по-бързо.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">Днес</span>
+              <p class="step-text">
+                <strong>Трансформъри и дифузионни модели:</strong> Системи като
+                VITS, Kokoro и Bark прескачат двуетапния конвейер изцяло —
+                генерират реч директно от текст в единна невронна мрежа с
+                човешко ниво на качество.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 03: Как работи TTS -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">03 —</span>
+        <h2 class="section-title">Как работи Text-to-Speech?</h2>
+      </div>
+      <p class="section-intro">
+        AI за TTS работи чрез многоетапен процес, включващ лингвистичен анализ и
+        синтез на реч. Системата използва техники за дълбоко обучение, особено
+        невронни мрежи, за да моделира връзките между езиковите елементи и
+        съответните им акустични характеристики.
+      </p>
+
+      <!-- TTS Pipeline -->
       <div class="pipeline-columns" style="grid-template-columns: 1fr">
         <div class="pipeline-col pipeline-col-last">
           <p class="pipeline-col-label">// TTS Pipeline — Текст → Глас</p>
@@ -68,78 +193,592 @@
             <div class="pipeline-step">
               <span class="step-num">1</span>
               <p class="step-text">
-                <strong>Текстов вход</strong> — нормализация: числа, съкращения
-                и препинателни знаци.
+                <strong>Текстов вход и нормализация:</strong> Системата разделя
+                текста на езиковите му компоненти — думи, пунктуация и структура
+                на изреченията. Числата, съкращенията и специалните знаци се
+                нормализират до стандартна форма.
               </p>
             </div>
             <div class="pipeline-step">
               <span class="step-num">2</span>
               <p class="step-text">
-                <strong>Фонетизация</strong> — G2P (Grapheme-to-Phoneme)
-                конвертиране на буквите в звуци.
+                <strong>Фонетизация (G2P):</strong> Grapheme-to-Phoneme
+                конвертиране — буквите се превръщат в фонеми (звуци). Определя
+                се произношението, ударението и интонационните модели на всяка
+                дума.
               </p>
             </div>
             <div class="pipeline-step">
               <span class="step-num">3</span>
               <p class="step-text">
-                <strong>Акустичен синтез</strong> — Tacotron генерира
-                мел-спектрограма от фонемите.
+                <strong>Акустично моделиране (Tacotron):</strong> Акустичният
+                модел — обикновено трансформър или рекурентна мрежа — приема
+                фонемната последователност и предсказва мел-спектрограма. Тук се
+                определя просодията: ритъм, ударение и интонация.
               </p>
             </div>
             <div class="pipeline-step">
               <span class="step-num">4</span>
               <p class="step-text">
-                <strong>Вокодер</strong> — WaveNet / HiFi-GAN превръща
-                спектрограмата в реален аудио сигнал.
+                <strong>Вокодер (WaveNet / HiFi-GAN):</strong> Преобразува
+                мел-спектрограмата в реален аудио сигнал. Съвременните невронни
+                вокодери (HiFi-GAN, BigVGAN, Vocos) генерират висококачествено
+                аудио от 24 kHz или 44.1 kHz, улавяйки фините детайли на
+                естествената реч.
               </p>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="info-box">
-        <p class="info-box-label">// Бележка от изследователя</p>
+      <div class="info-box" style="margin-top: 1.5rem">
+        <p class="info-box-label">// Мел-спектрограма — "снимката" на звука</p>
         <p class="info-box-text">
-          Добавете бележка тук — например как мел-спектрограмата представлява
-          „снимка" на звука и защо вокодерът е ключов за естествено звучене.
+          Мел-спектрограмата е визуално представяне на честотното съдържание на
+          аудиото с течение на времето — нещо като "снимка на звука". Tacotron 2
+          генерира тази спектрограма от текст, след което WaveNet или HiFi-GAN я
+          „оживяват", конвертирайки я в реален аудио сигнал. Именно тази
+          двуетапна архитектура е в основата на съвременния TTS.
         </p>
       </div>
     </section>
 
+    <!-- SECTION 04: Tacotron & Seq2Seq -->
     <section class="section">
       <div class="section-header">
-        <span class="section-number">02 —</span>
-        <h2 class="section-title">Tacotron & Seq2Seq</h2>
+        <span class="section-number">04 —</span>
+        <h2 class="section-title">Tacotron и Seq2Seq архитектурата</h2>
       </div>
       <p class="section-intro">
-        Вашият изследователски текст тук. Обяснете архитектурата на Tacotron —
-        encoder-decoder с attention механизъм.
+        Tacotron революционизира TTS като end-to-end система — приема само
+        текстови символи и директно генерира спектрограма на речта, без сложни
+        лингвистични характеристики като вход.
       </p>
-      <div class="info-box">
-        <p class="info-box-label">// Изследователски текст</p>
+
+      <div class="pipeline-columns">
+        <div class="pipeline-col">
+          <p class="pipeline-col-label">// Tacotron (2017)</p>
+          <div class="pipeline-steps">
+            <div class="pipeline-step">
+              <span class="step-num">✦</span>
+              <p class="step-text">
+                <strong>Архитектура:</strong> Sequence-to-sequence модел с
+                encoder-decoder структура и attention механизъм — следва
+                познатата енкодер-декодер схема.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">✦</span>
+              <p class="step-text">
+                <strong>Вход → Изход:</strong> Приема символи (букви) и генерира
+                необработена спектрограма на финалната реч, конвертирана след
+                това в аудио вълна.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">✦</span>
+              <p class="step-text">
+                <strong>Предимство:</strong> Без нужда от сложни лингвистични и
+                акустични характеристики — моделът се учи само от примери на реч
+                и съответни текстови транскрипти.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="pipeline-col pipeline-col-last">
+          <p class="pipeline-col-label">// Tacotron 2 (2018)</p>
+          <div class="pipeline-steps">
+            <div class="pipeline-step">
+              <span class="step-num">✦</span>
+              <p class="step-text">
+                <strong>Рекурентна seq2seq мрежа:</strong> Съпоставя символни
+                вграждания с мел-мащабни спектрограми, последвана от WaveNet
+                вокодер.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">✦</span>
+              <p class="step-text">
+                <strong>Резултати:</strong> Постига средна оценка за мнение
+                (MOS) от 4.53 — сравнима с 4.58 за професионални студийни
+                записи.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">✦</span>
+              <p class="step-text">
+                <strong>Attention механизмът:</strong> Позволява на модела да
+                „знае" кой фонем звучи кога — естествено подравняване на текста
+                с аудио времевите отпечатъци.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 05: Вокодери -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">05 —</span>
+        <h2 class="section-title">Вокодери — WaveNet и HiFi-GAN</h2>
+      </div>
+      <p class="section-intro">
+        Вокодерите са компонентите, превръщащи абстрактната мел-спектрограма в
+        реален, чуваем аудио сигнал. Невронните вокодери революционизираха
+        качеството на синтезираната реч.
+      </p>
+
+      <div class="topic-cards">
+        <div class="topic-card">
+          <div class="topic-card-bar topic-card-bar-stt"></div>
+          <div class="topic-card-body">
+            <p class="topic-type">Google DeepMind · 2016</p>
+            <p class="topic-name">WaveNet</p>
+            <p class="topic-description">
+              Дълбока генеративна мрежа, генерираща необработени аудио вълни
+              директно. Произвежда вероятностно разпределение върху
+              дискретизирани аудио семпъли — семпъл по семпъл. Революционен
+              резултат: за пръв път синтезираният глас е почти неразличим от
+              човешки.
+            </p>
+          </div>
+        </div>
+        <div class="topic-card">
+          <div class="topic-card-bar topic-card-bar-tts"></div>
+          <div class="topic-card-body">
+            <p class="topic-type">Съвременен вокодер</p>
+            <p class="topic-name">HiFi-GAN</p>
+            <p class="topic-description">
+              Генеративна противникова мрежа (GAN) за синтез на реч. Генерира
+              висококачествено аудио от 24 kHz до 44.1 kHz, улавяйки фините
+              детайли на естествената реч — включително звуци от дишане и фини
+              устни движения. Значително по-бързо от WaveNet при извод.
+            </p>
+          </div>
+        </div>
+        <div class="topic-card">
+          <div class="topic-card-bar topic-card-bar-apps"></div>
+          <div class="topic-card-body">
+            <p class="topic-type">End-to-end</p>
+            <p class="topic-name">VITS / Kokoro / Bark</p>
+            <p class="topic-description">
+              Най-новото поколение модели прескачат двуетапния конвейер изцяло.
+              Преминават директно от текст към аудио в единна невронна мрежа —
+              по-естествени резултати с по-малко артефакти.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box" style="margin-top: 1.5rem">
+        <p class="info-box-label">// Защо raw waveform е по-добро?</p>
         <p class="info-box-text">
-          Добавете вашия анализ. Как attention механизмът позволява на модела да
-          „знае" кой фонем звучи кога? Каква е разликата между Tacotron 1 и 2?
+          Ранните вокодери (Griffin-Lim) произвеждаха роботизирани артефакти.
+          WaveNet въвежда революционен подход — генерира директно необработена
+          аудио вълна, без посредничеството на спектрограмни приближения.
+          Dilated causal convolutions позволяват на мрежата да „вижда" широк
+          времеви контекст, докато поддържа причинна последователност — т.е.
+          всеки семпъл зависи само от предходни, не от бъдещи.
         </p>
       </div>
     </section>
 
+    <!-- SECTION 06: Основни TTS модели -->
     <section class="section">
       <div class="section-header">
-        <span class="section-number">03 —</span>
-        <h2 class="section-title">Вокодери — WaveNet & HiFi-GAN</h2>
+        <span class="section-number">06 —</span>
+        <h2 class="section-title">Ключови TTS модели</h2>
       </div>
       <p class="section-intro">
-        Вашият изследователски текст тук. Разгледайте невронните вокодери и как
-        революционизираха качеството на синтезираната реч.
+        Шест влиятелни модела за синтез на реч, обясняващи как съвременните TTS
+        системи генерират плавна, изразителна и висококачествена реч.
       </p>
-      <div class="info-box">
-        <p class="info-box-label">// Изследователски текст</p>
+
+      <table class="models-table">
+        <thead>
+          <tr>
+            <th>Модел</th>
+            <th>Вид</th>
+            <th>Ключова особеност</th>
+            <th>Приложение</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="model-name">WaveNet</span></td>
+            <td><span class="badge badge-stt">Вокодер</span></td>
+            <td>Генерира raw waveform директно, семпъл по семпъл</td>
+            <td>Google Assistant, Google Cloud TTS</td>
+          </tr>
+          <tr>
+            <td><span class="model-name">Tacotron 2</span></td>
+            <td><span class="badge badge-tts">Акустичен</span></td>
+            <td>Seq2seq + attention → мел-спектрограма. MOS 4.53</td>
+            <td>Google TTS, NVIDIA</td>
+          </tr>
+          <tr>
+            <td><span class="model-name">FastSpeech</span></td>
+            <td><span class="badge badge-tts">Акустичен</span></td>
+            <td>Паралелно генериране — значително по-бързо от Tacotron</td>
+            <td>Реално-времеви приложения</td>
+          </tr>
+          <tr>
+            <td><span class="model-name">HiFi-GAN</span></td>
+            <td><span class="badge badge-stt">Вокодер</span></td>
+            <td>GAN базиран — 44.1 kHz аудио, бърз извод</td>
+            <td>Производствени TTS системи</td>
+          </tr>
+          <tr>
+            <td><span class="model-name">VITS</span></td>
+            <td><span class="badge badge-stt">End-to-end</span></td>
+            <td>Текст → аудио в единна мрежа, без двуетапен конвейер</td>
+            <td>Съвременни гласови асистенти</td>
+          </tr>
+          <tr>
+            <td><span class="model-name">Bark / Kokoro</span></td>
+            <td><span class="badge badge-stt">End-to-end</span></td>
+            <td>Трансформърна архитектура, многоезична, изразителна</td>
+            <td>Генеративни аудио приложения</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 07: Предимства за бизнеса -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">07 —</span>
+        <h2 class="section-title">Предимства на TTS за бизнеса</h2>
+      </div>
+      <p class="section-intro">
+        Преобразуването на текст в реч с AI не е само за създаване на
+        реалистични гласове — технологията има огромен набор от предимства в
+        множество случаи на употреба.
+      </p>
+
+      <div class="pipeline-columns">
+        <div class="pipeline-col">
+          <p class="pipeline-col-label">// Достъпност и включване</p>
+          <div class="pipeline-steps">
+            <div class="pipeline-step">
+              <span class="step-num">1</span>
+              <p class="step-text">
+                <strong>Достъпност:</strong> Компютърно генерираният глас
+                допринася за приобщаващи дизайнерски практики — гарантира достъп
+                до учебни и маркетингови материали за разнообразна аудитория.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">2</span>
+              <p class="step-text">
+                <strong>Помощни технологии:</strong> TTS е жизненоважен
+                инструмент за хора с дислексия, обучителни затруднения и
+                когнитивни увреждания — помага да преодолеят трудностите при
+                разбирането и да учат по различни начини.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">3</span>
+              <p class="step-text">
+                <strong>Намалено време пред екрана:</strong> TTS позволява
+                консумиране на дигитално съдържание без визуална ангажираност —
+                по-малко натоварване за очите.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">4</span>
+              <p class="step-text">
+                <strong>Изучаване на езици:</strong> Помага за усвояването на
+                езика, практикуването на произношението и подобряването на
+                разбирането.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="pipeline-col pipeline-col-last">
+          <p class="pipeline-col-label">// Бизнес и продуктивност</p>
+          <div class="pipeline-steps">
+            <div class="pipeline-step">
+              <span class="step-num">5</span>
+              <p class="step-text">
+                <strong>Многоезична комуникация:</strong> TTS улеснява
+                комуникацията на множество езици — контактните центрове не са
+                обвързани от възможностите на родния език.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">6</span>
+              <p class="step-text">
+                <strong>Ефективност и намаляване на обажданията:</strong> TTS
+                автоматизира гласовите команди, разговорните обаждания за
+                обслужване на клиенти и разказването на съдържание — спестява
+                ценно време и ресурси.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">7</span>
+              <p class="step-text">
+                <strong>Персонализация:</strong> Приложенията могат да създават
+                естествено звучащи AI гласове, отговарящи на предпочитанията на
+                потребителя — поддържа изживяването персонализирано и
+                ангажиращо.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">8</span>
+              <p class="step-text">
+                <strong>По-добър анализ на данни:</strong> Гласовият анализ
+                позволява да се определи количествено настроението на клиентите
+                и да се разбере ангажираността им.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 08: Приложения -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">08 —</span>
+        <h2 class="section-title">Приложения на TTS</h2>
+      </div>
+      <p class="section-intro">
+        TTS с AI е изключително гъвкава технология, отключваща редица случаи на
+        употреба в различни индустрии.
+      </p>
+
+      <div class="apps-grid">
+        <div class="app-item">
+          <p class="app-number">01</p>
+          <p class="app-name">Навигация и GPS</p>
+          <p class="app-description">
+            Аудио насоки в реално време в навигационните системи — повишена
+            безопасност и удобство по пътя.
+          </p>
+        </div>
+        <div class="app-item">
+          <p class="app-number">02</p>
+          <p class="app-name">Гласови асистенти</p>
+          <p class="app-description">
+            Виртуални асистенти като Siri, Google Assistant и Alexa — отговарят
+            на въпроси и изпълняват задачи.
+          </p>
+        </div>
+        <div class="app-item">
+          <p class="app-number">03</p>
+          <p class="app-name">Контактни центрове</p>
+          <p class="app-description">
+            Автоматизирани IVR системи и гласова автоматизация за обслужване на
+            клиенти без жив оператор.
+          </p>
+        </div>
+        <div class="app-item">
+          <p class="app-number">04</p>
+          <p class="app-name">Аудиокниги и подкасти</p>
+          <p class="app-description">
+            Генериране на аудио съдържание от текст за публикации, статии и
+            образователни материали.
+          </p>
+        </div>
+        <div class="app-item">
+          <p class="app-number">05</p>
+          <p class="app-name">Развлечения и игри</p>
+          <p class="app-description">
+            TTS обогатява игровите изживявания, давайки на героите и разказите
+            собствен „глас".
+          </p>
+        </div>
+        <div class="app-item">
+          <p class="app-number">06</p>
+          <p class="app-name">Субтитри на живо</p>
+          <p class="app-description">
+            Реалновременни субтитри и дублаж за събития на живо, конференции и
+            уебинари.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 09: Качество и ефективност -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">09 —</span>
+        <h2 class="section-title">Качество и ефективност</h2>
+      </div>
+      <p class="section-intro">
+        Благодарение на нарастващата популярност и широкото използване на AI,
+        TTS стана по-ефективно от всякога.
+      </p>
+
+      <div class="pipeline-columns" style="grid-template-columns: 1fr">
+        <div class="pipeline-col pipeline-col-last">
+          <p class="pipeline-col-label">// Ключови показатели за качество</p>
+          <div class="pipeline-steps">
+            <div class="pipeline-step">
+              <span class="step-num">MOS</span>
+              <p class="step-text">
+                <strong>Mean Opinion Score (MOS):</strong> Стандартният
+                показател за оценка на качеството на синтезираната реч от 1 до
+                5. Tacotron 2 постига 4.53, сравнимо с 4.58 за професионални
+                студийни записи.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">Hz</span>
+              <p class="step-text">
+                <strong>Честота на дискретизация:</strong> Съвременните вокодери
+                (HiFi-GAN, BigVGAN) генерират аудио при 24 kHz или 44.1 kHz —
+                CD-качество и по-добро.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">RTF</span>
+              <p class="step-text">
+                <strong>Real-Time Factor (RTF):</strong> Мярка за скоростта на
+                синтез. RTF &lt; 1 означава генериране по-бързо от реалното
+                време — необходимо за реалновременни приложения.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box" style="margin-top: 1.5rem">
+        <p class="info-box-label">// Бъдещето на TTS</p>
         <p class="info-box-text">
-          Добавете вашия анализ за WaveNet — защо генерирането на raw waveform
-          директно е по-качествено? Каква е ролята на dilated causal
-          convolutions?
+          <strong>Адаптивна персонализация:</strong> Системите ще се настройват
+          към акцента, темпото и стила на конкретния потребител. &nbsp;|&nbsp;
+          <strong>Емоционална изразителност:</strong> Моделите няма само да
+          „четат" емоции, а да ги изпълняват — по-богати преходи и по-живи
+          интонации. &nbsp;|&nbsp;
+          <strong>Клониране на гласове:</strong> Системи като CosyVoice 2 могат
+          да копират конкретен глас от едва 5–30 секунди референтно аудио.
+          &nbsp;|&nbsp; <strong>Хиперфин контрол:</strong> Потребителите ще
+          регулират тон, скорост, тембър и микроинтонации за проекто-специфични
+          гласове.
         </p>
+      </div>
+    </section>
+
+    <!-- SECTION 10: Речник -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">10 —</span>
+        <h2 class="section-title">Речник на TTS термините</h2>
+      </div>
+      <p class="section-intro">
+        Ключовите понятия в областта на Text-to-Speech и синтеза на реч.
+      </p>
+
+      <div style="border: 1px solid var(--black); overflow: hidden">
+        <table class="models-table">
+          <thead>
+            <tr>
+              <th style="width: 28%">Термин</th>
+              <th>Определение</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="model-name">TTS / Синтез на реч</span></td>
+              <td>Технология, преобразуваща писмен текст в говорима реч.</td>
+            </tr>
+            <tr>
+              <td><span class="model-name">Мел-спектрограма</span></td>
+              <td>
+                Визуално представяне на честотното съдържание на аудиото с
+                течение на времето — „снимката на звука", генерирана от
+                Tacotron.
+              </td>
+            </tr>
+            <tr>
+              <td><span class="model-name">Вокодер</span></td>
+              <td>
+                Компонент, преобразуващ мел-спектрограмата в реален аудио сигнал
+                (WaveNet, HiFi-GAN, BigVGAN).
+              </td>
+            </tr>
+            <tr>
+              <td><span class="model-name">Prosody (Просодия)</span></td>
+              <td>
+                Ритъмът, ударението и интонацията на речта — ключови за
+                естественото звучене.
+              </td>
+            </tr>
+            <tr>
+              <td><span class="model-name">G2P</span></td>
+              <td>
+                Grapheme-to-Phoneme — конвертиране на букви (графеми) в звуци
+                (фонеми).
+              </td>
+            </tr>
+            <tr>
+              <td><span class="model-name">Seq2Seq</span></td>
+              <td>
+                Sequence-to-sequence архитектура — приема последователност и
+                генерира друга. Основата на Tacotron.
+              </td>
+            </tr>
+            <tr>
+              <td><span class="model-name">Attention механизъм</span></td>
+              <td>
+                Позволява на модела да „знае" кой фонем звучи кога — естествено
+                подравняване на текст с аудио.
+              </td>
+            </tr>
+            <tr>
+              <td><span class="model-name">Raw Waveform</span></td>
+              <td>
+                Необработена аудио вълна — директното представяне на звука като
+                амплитуда с течение на времето.
+              </td>
+            </tr>
+            <tr>
+              <td><span class="model-name">MOS</span></td>
+              <td>
+                Mean Opinion Score — стандартен показател за качество на
+                синтезирана реч (скала 1–5).
+              </td>
+            </tr>
+            <tr>
+              <td><span class="model-name">WaveNet</span></td>
+              <td>
+                Дълбока генеративна мрежа от Google DeepMind (2016), генерираща
+                raw audio waveforms директно.
+              </td>
+            </tr>
+            <tr>
+              <td><span class="model-name">HiFi-GAN</span></td>
+              <td>
+                GAN базиран вокодер — генерира висококачествено аудио бързо.
+                Широко използван в производствени TTS системи.
+              </td>
+            </tr>
+            <tr>
+              <td><span class="model-name">End-to-end TTS</span></td>
+              <td>
+                Системи, преминаващи директно от текст към аудио в единна мрежа
+                — без двуетапен конвейер (VITS, Bark, Kokoro).
+              </td>
+            </tr>
+            <tr>
+              <td><span class="model-name">RTF</span></td>
+              <td>
+                Real-Time Factor — съотношение между времето за синтез и
+                продължителността на аудиото. RTF &lt; 1 = по-бързо от реалното.
+              </td>
+            </tr>
+            <tr>
+              <td><span class="model-name">Клониране на глас</span></td>
+              <td>
+                Копиране на конкретен глас (тембър, акцент, стил) от кратко
+                референтно аудио (5–30 сек).
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
@@ -169,7 +808,7 @@
         </p>
       </div>
       <div class="footer-right">
-        <p class="footer-credit">© Всички права запазени 2025</p>
+        <p class="footer-credit">© Всички права запазени 2026</p>
       </div>
       <div class="footer-stripe"></div>
     </footer>
