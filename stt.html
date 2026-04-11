@@ -46,8 +46,10 @@
     <div class="page-header">
       <h1 class="page-header-title">Speech-to-Text</h1>
       <p class="page-header-desc">
-        Speech-to-Text (STT) е технология, която използва изкуствен интелект, за
-        да преобразува говор в текст автоматично.
+        Speech-to-Text (STT), известна още като Автоматично Разпознаване на Реч
+        (ASR), е AI технология, която преобразува изговорен език в писмен текст.
+        Все по-широко използвана от компании по целия свят за вграждане на аудио
+        функции в приложения и създаване на интелигентни асистенти.
       </p>
     </div>
 
@@ -64,27 +66,139 @@
       <div class="info-box">
         <p class="info-box-label">// Основни факти</p>
         <p class="info-box-text">
-          Обикновено комбинира технология за разпознаване на реч, задвижвана от
-          изкуствен интелект, известна още като автоматично разпознаване на реч,
-          с транскрипция. Компютърна програма улавя звук под формата на вибрации
-          на звукови вълни и използва езикови алгоритми, за да преобразува аудио
-          входа в цифрови символи, думи и фрази.
+          Комбинира технология за разпознаване на реч, задвижвана от изкуствен
+          интелект (известна като ASR), с транскрипция. Компютърна програма
+          улавя звук под формата на вибрации на звукови вълни и използва езикови
+          алгоритми, за да преобразува аудио входа в цифрови символи, думи и
+          фрази. STT е дял от обработката на естествен език (NLP) — подобласт на
+          AI, фокусирана върху взаимодействията между компютрите и човешкия
+          език.
         </p>
       </div>
     </section>
 
-    <!-- SECTION 02: Как работи STT -->
+    <!-- SECTION 02: Кратка история -->
     <section class="section">
       <div class="section-header">
         <span class="section-number">02 —</span>
+        <h2 class="section-title">Кратка история на STT моделите</h2>
+      </div>
+      <p class="section-intro">
+        За разлика от изображенията, аудио данните са повлияни от фонов шум,
+        качество на звука, акценти и индустриален жаргон — изключително трудни
+        за разбиране от машините. Ето как технологията се е развила с
+        десетилетията.
+      </p>
+
+      <!-- Timeline image -->
+      <div
+        style="
+          margin-bottom: 1.5rem;
+          border: 2px solid var(--black);
+          background: var(--white);
+          padding: 1.2rem;
+          text-align: center;
+        "
+      >
+        <img
+          src="https://cdn.prod.website-files.com/645a730e85c9b4dfd57de5a1/67841079a1722424b5a2ad9e_64dfa22513187843808d728a_nlp-timeline.png"
+          alt="Времева линия на еволюцията на STT с ключови моменти"
+          style="max-width: 100%; height: auto; display: block; margin: 0 auto"
+        />
+        <p
+          style="
+            font-size: 11px;
+            color: var(--gray-muted);
+            margin-top: 0.6rem;
+            font-family: &quot;Courier New&quot;, monospace;
+            letter-spacing: 1px;
+          "
+        >
+          // ХРОНОЛОГИЯ НА ЕВОЛЮЦИЯТА НА ПРЕОБРАЗУВАНЕТО НА РЕЧ В ТЕКСТ
+        </p>
+      </div>
+
+      <div class="pipeline-columns" style="grid-template-columns: 1fr">
+        <div class="pipeline-col pipeline-col-last">
+          <p class="pipeline-col-label">// Ключови моменти в развитието</p>
+          <div class="pipeline-steps">
+            <div class="pipeline-step">
+              <span class="step-num">1949</span>
+              <p class="step-text">
+                <strong>Меморандумът на Уивър:</strong> Дава тласък на идеята за
+                използване на компютри за обработка на езика — отправна точка на
+                NLP.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">~1970s</span>
+              <p class="step-text">
+                <strong>Скрити Марковски Модели (HMM):</strong> Ранните NLP
+                модели използват статистически методи за транскрипция, но имат
+                ограничена способност да разпознават различни акценти, диалекти
+                и стилове на говор.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">2010s</span>
+              <p class="step-text">
+                <strong>Машинно обучение и дълбоко обучение:</strong>
+                Статистическите модели са заменени от
+                <strong>дълбоки невронни мрежи (DNN)</strong> и
+                <strong>рекурентни невронни мрежи (RNN)</strong>, способни да
+                улавят идиоматични изрази и нюанси. Все пак имаше проблем с
+                контекста — моделите не можеха да правят изводи въз основа на
+                цялото изречение.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">2017</span>
+              <p class="step-text">
+                <strong>Трансформъри — революция в ASR:</strong> Механизмът на
+                <strong>self-attention</strong> позволи улавяне на дългообхватни
+                зависимости между различни части на речта и отчитане на
+                по-широкия контекст на всяко транскрибирано изречение.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">Днес</span>
+              <p class="step-text">
+                <strong>Хибридни AI системи:</strong> Доставчиците разчитат на
+                все по-разнообразни хибридни системи, доближаващи се до начина,
+                по който човешкият мозък улавя, обработва и анализира речта.
+                Производителността се е подобрила значително благодарение на
+                open-source хранилища, обширни тренировъчни данни и по-достъпен
+                GPU/CPU хардуер.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box" style="margin-top: 1.5rem">
+        <p class="info-box-label">
+          // От "разпознаване на реч" към "разбиране на езика"
+        </p>
+        <p class="info-box-text">
+          Мнозина смятат, че с появата на трансформърите областта е прескочила
+          прага от просто „разпознаване на реч" към по-холистичната концепция за
+          „разбиране на езика" — машините вече не само чуват думите, но и
+          разбират тяхното значение в контекст.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 03: Как работи STT -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">03 —</span>
         <h2 class="section-title">Как работи Speech-to-Text?</h2>
       </div>
       <p class="section-intro">
-        Софтуерът за преобразуване на реч в текст съдържа няколко компонента. Те
-        включват:
+        Транскрипцията е сложен процес, включващ множество етапи и AI модели,
+        работещи заедно. Ето общ преглед на ключовите стъпки.
       </p>
 
-      <!-- Subsection: Основни компоненти -->
       <div class="pipeline-columns" style="grid-template-columns: 1fr">
         <div class="pipeline-col pipeline-col-last">
           <p class="pipeline-col-label">// Основни компоненти на STT</p>
@@ -93,8 +207,7 @@
               <span class="step-num">1</span>
               <p class="step-text">
                 <strong>Речев вход:</strong> Когато микрофонът улавя изговорени
-                думи, те се преобразуват в цифров сигнал, който може да бъде
-                обработен от компютър.
+                думи, те се преобразуват в цифров сигнал, обработим от компютър.
               </p>
             </div>
             <div class="pipeline-step">
@@ -108,7 +221,7 @@
               <span class="step-num">3</span>
               <p class="step-text">
                 <strong>Езиков контекст:</strong> Езиков модел избира
-                най-логичния текст на база на контекста и граматиката.
+                най-логичния текст на база контекста и граматиката.
               </p>
             </div>
             <div class="pipeline-step">
@@ -123,56 +236,81 @@
         </div>
       </div>
 
-      <!-- Subsection: Стъпки на процеса -->
-      <div class="pipeline-columns" style="grid-template-columns: 1fr">
+      <div
+        class="pipeline-columns"
+        style="grid-template-columns: 1fr; margin-top: 1.5rem"
+      >
         <div class="pipeline-col pipeline-col-last">
-          <p class="steps_stt">
-            Обикновено процесът на преобразуване на реч в текст се състои от
-            следните стъпки:
-          </p>
+          <p class="steps_stt">Подробни стъпки на процеса на разпознаване:</p>
           <br />
-          <p class="pipeline-col-label">
-            // Стъпки на процеса на разпознаване:
-          </p>
+          <p class="pipeline-col-label">// Стъпки на процеса:</p>
           <div class="pipeline-steps">
             <div class="pipeline-step">
               <span class="step-num">1</span>
               <p class="step-text">
-                <strong>Предварителна обработка на аудио:</strong> След като
-                аудио записите бъдат заснети, те се обработват предварително, за
-                да се подобри качеството и точността на разпознаване. Това
-                включва премахване на фонови шумове и неподходящи честоти,
-                стабилизиране на нивото на силата на звука, сегментиране на
-                клипа за по-лесна обработка и конвертиране на аудио файла в
-                стандартен формат.
+                <strong>Предварителна обработка на аудио:</strong> Намаляване на
+                шума, премахване на ехото, стабилизиране на нивото на звука,
+                сегментиране и конвертиране в стандартен формат — всичко за
+                подобряване на качеството и точността на разпознаване.
               </p>
             </div>
             <div class="pipeline-step">
               <span class="step-num">2</span>
               <p class="step-text">
-                <strong>Звуков анализ и извличане на характеристики:</strong>
-                Гласовите сигнали често се изобразяват като спектрограми, които
-                са визуални представяния на честотите във времето. Съответните
-                части от аудио записите се разделят на поредица от фонеми, които
-                са най-малката единица на речта, отличаваща една дума от друга.
-                Основните класове фонеми са гласни и съгласни. Езикови модели и
-                декодери могат да съпоставят фонемите с думи и след това с
-                изречения. Акустичните модели, базирани на дълбоко обучение,
-                могат да предскажат кои символи и думи е вероятно да се появят
-                следващи въз основа на контекста.
+                <strong>Извличане на характеристики:</strong> Аудио формата на
+                вълната се преобразува в подходящо представяне за анализ.
+                Извличат се характеристики, улавящи честота, амплитуда и
+                продължителност. Мел-честотните кепстрални коефициенти (MFCC) са
+                широко използвани в обработката на реч.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">3</span>
+              <p class="step-text">
+                <strong>Акустично моделиране:</strong> Обучение на статистически
+                модел, съпоставящ извлечените характеристики с фонеми —
+                най-малките звукови единици в даден език. Гласовите сигнали се
+                изобразяват като спектрограми.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">4</span>
+              <p class="step-text">
+                <strong>Езиково моделиране:</strong> Създаване на вероятностен
+                модел за това как думите и фразите е вероятно да се появят.
+                Помага на системата да вземе информирани решения кои думи са
+                по-вероятни предвид предишните думи в изречението.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">5</span>
+              <p class="step-text">
+                <strong>Декодиране:</strong> Системата използва акустичния и
+                езиковия модел, за да транскрибира аудиото в поредица от думи,
+                търсейки най-вероятната последователност, съответстваща на аудио
+                характеристиките.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">6</span>
+              <p class="step-text">
+                <strong>Постобработка:</strong> Прилагат се езикови ограничения,
+                граматически правила и контекстуален анализ за подобряване на
+                точността — справяне с омофони (думи, звучащи еднакво с различно
+                значение) и форматиране на крайния изход.
               </p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Subsection: Основни методи -->
-      <div class="pipeline-columns" style="grid-template-columns: 1fr">
+      <!-- Методи -->
+      <div
+        class="pipeline-columns"
+        style="grid-template-columns: 1fr; margin-top: 1.5rem"
+      >
         <div class="pipeline-col pipeline-col-last">
-          <p class="steps_stt">
-            Процесът на разпознаване на реч може да се извърши по три основни
-            метода:
-          </p>
+          <p class="steps_stt">Три основни метода на разпознаване:</p>
           <br />
           <p class="pipeline-col-label">// Основни методи:</p>
           <div class="pipeline-steps">
@@ -180,106 +318,681 @@
               <span class="step-num">1</span>
               <p class="step-text">
                 <strong>Синхронното разпознаване:</strong> Моментално
-                преобразуване на речта в текст. То може да обработва само аудио
-                файлове, по-кратки от една минута. Това се използва при субтитри
-                на живо за телевизионно излъчване.
+                преобразуване на речта в текст. Обработва само аудио файлове под
+                1 минута. Използва се при субтитри на живо за телевизионно
+                излъчване.
               </p>
             </div>
             <div class="pipeline-step">
               <span class="step-num">2</span>
               <p class="step-text">
-                <strong>Разпознаването на стрийминг:</strong> Ппроцес, при който стрийминг аудиото се обработва в реално време, така че фрагментирани текстове може да се появят, докато потребителят все още говори.
+                <strong>Разпознаването на стрийминг:</strong> Стрийминг аудиото
+                се обработва в реално време — фрагментирани текстове се
+                появяват, докато потребителят все още говори.
               </p>
-          </div>
-          <div class="pipeline-step">
+            </div>
+            <div class="pipeline-step">
               <span class="step-num">3</span>
               <p class="step-text">
-                <strong>Асинхронното разпознаване:</strong> Kогато големи предварително записани аудио файлове се изпращат за транскрипция. Те могат да бъдат поставени на опашка за обработка и доставени по-късно.
-              </p>  
+                <strong>Асинхронното разпознаване:</strong> Големи предварително
+                записани аудио файлове се изпращат за транскрипция, поставят се
+                на опашка за обработка и се доставят по-късно.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 03: Защо е важно STT -->
+    <!-- SECTION 04: Видове STT модели -->
     <section class="section">
       <div class="section-header">
-        <span class="section-number">03 —</span>
+        <span class="section-number">04 —</span>
+        <h2 class="section-title">Видове STT модели</h2>
+      </div>
+      <p class="section-intro">
+        Начинът на транскрипция зависи от използваните AI модели. Разграничаваме
+        традиционните акустични системи от системите с дълбоко обучение „от край
+        до край".
+      </p>
+
+      <div class="topic-cards">
+        <div class="topic-card">
+          <div class="topic-card-bar topic-card-bar-stt"></div>
+          <div class="topic-card-body">
+            <p class="topic-type">Традиционен подход</p>
+            <p class="topic-name">Акустични системи (HMM + DNN)</p>
+            <p class="topic-description">
+              Разчитат на комбинация от скрити марковски модели (HMM) и дълбоки
+              невронни мрежи (DNN). Транскрипцията се извършва чрез традиционно
+              акустично-фонетично съпоставяне. Всяка стъпка се изпълнява от
+              отделен модел, което ги прави по-скъпи и по-податливи на грешки.
+            </p>
+          </div>
+        </div>
+        <div class="topic-card">
+          <div class="topic-card-bar topic-card-bar-tts"></div>
+          <div class="topic-card-body">
+            <p class="topic-type">Съвременен подход</p>
+            <p class="topic-name">Системи „от край до край"</p>
+            <p class="topic-description">
+              Задвижвани от CNN, RNN и/или трансформъри, работят като единна
+              невронна мрежа. Всички ключови стъпки са обединени в един
+              взаимосвързан процес. Позволяват по-голяма точност чрез механизъм
+              на вграждане за контекстуално разбиране на езика. Пример: Whisper
+              ASR от OpenAI.
+            </p>
+          </div>
+        </div>
+        <div class="topic-card">
+          <div class="topic-card-bar topic-card-bar-apps"></div>
+          <div class="topic-card-body">
+            <p class="topic-type">Архитектура</p>
+            <p class="topic-name">Трансформъри</p>
+            <p class="topic-description">
+              Съвременен стандарт. Self-attention механизмът улавя дългообхватни
+              зависимости в речта. Системите „от край до край" са по-лесни за
+              обучение, по-гъвкави и позволяват разширени функционалности като
+              превод, обобщаване и семантично търсене.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 05: Фина настройка -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">05 —</span>
+        <h2 class="section-title">Фина настройка (Fine-Tuning)</h2>
+      </div>
+      <p class="section-intro">
+        Дори най-точните модели за транскрипция се нуждаят от допълнителна
+        работа, преди да бъдат приложени към конкретни случаи на употреба без
+        компромис с точността.
+      </p>
+      <div class="info-box">
+        <p class="info-box-label">// Какво е фина настройка?</p>
+        <p class="info-box-text">
+          Фината настройка се състои в адаптиране на предварително обучена
+          невронна мрежа към ново приложение чрез обучението ѝ върху специфични
+          за задачата данни. Тя е ключова за комерсиалната жизнеспособност на
+          висококачествената STT.
+        </p>
+      </div>
+
+      <div
+        class="pipeline-columns"
+        style="grid-template-columns: 1fr; margin-top: 1.5rem"
+      >
+        <div class="pipeline-col pipeline-col-last">
+          <p class="pipeline-col-label">
+            // Случаи на употреба на фина настройка в аудио
+          </p>
+          <div class="pipeline-steps">
+            <div class="pipeline-step">
+              <span class="step-num">✦</span>
+              <p class="step-text">
+                <strong>Специализирани области:</strong> Медицински речник,
+                правен жаргон, технически термини — адаптиране към специфичен
+                домейн.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">✦</span>
+              <p class="step-text">
+                <strong>Акценти и езици:</strong> Подобряване на точността при
+                конкретни акценти, диалекти и по-рядко срещани езици.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">✦</span>
+              <p class="step-text">
+                <strong>Нива на шум и говорители:</strong> Адаптиране към
+                специфична среда на запис или конкретни говорители.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box" style="margin-top: 1rem">
+        <p class="info-box-label">// Ключово предимство</p>
+        <p class="info-box-text">
+          Благодарение на фината настройка, един универсален модел може да бъде
+          пригоден за голямо разнообразие от специфични и нишови случаи на
+          употреба — без да е необходимо да се изгражда от нулата.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 06: Характеристики и параметри -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">06 —</span>
+        <h2 class="section-title">Ключови характеристики и параметри</h2>
+      </div>
+      <p class="section-intro">
+        При избора на STT решение или доставчик, редица параметри влияят върху
+        процеса на транскрипция. Ето ключовите, които трябва да се вземат
+        предвид.
+      </p>
+
+      <!-- Вход -->
+      <div
+        class="pipeline-columns"
+        style="grid-template-columns: 1fr 1fr; margin-bottom: 1.5rem"
+      >
+        <div class="pipeline-col">
+          <p class="pipeline-col-label">// Параметри на входа</p>
+          <div class="pipeline-steps">
+            <div class="pipeline-step">
+              <span class="step-num">1</span>
+              <p class="step-text">
+                <strong>Формат:</strong> Повечето модели предоставят различни
+                нива на качество в зависимост от формата (m4a, mp3, mp4, mpeg) и
+                дали транскрипцията е асинхронна или на живо.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">2</span>
+              <p class="step-text">
+                <strong>Честота на дискретизация:</strong> Повечето аудио
+                файлове днес са минимум 40 kHz. Телефонни записи могат да са 16
+                kHz или дори 8 kHz. По-високите честоти (128 kHz) трябва да
+                бъдат ресемплирани.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">3</span>
+              <p class="step-text">
+                <strong>Битова дълбочина:</strong> Показва каква амплитуда е
+                записана. DVD аудио = 24 бита; телефония = 8 бита. По-висока
+                дълбочина = по-широк диапазон на звука.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">4</span>
+              <p class="step-text">
+                <strong>Канали:</strong> Моно (1 канал), стерео (2 канала) или
+                многоканален. Някои доставчици автоматично откриват броя канали
+                за подобряване на транскрипцията.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="pipeline-col pipeline-col-last">
+          <p class="pipeline-col-label">
+            // Параметри на изхода и производителността
+          </p>
+          <div class="pipeline-steps">
+            <div class="pipeline-step">
+              <span class="step-num">1</span>
+              <p class="step-text">
+                <strong>Изходен формат:</strong> Повечето доставчици предоставят
+                JSON с транскрибиран текст и времеви отпечатъци. Някои предлагат
+                и .txt, SRT или VTT (субтитри).
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">2</span>
+              <p class="step-text">
+                <strong>Латентност:</strong> Закъснението между получения вход и
+                генерирания изход. По-ниска латентност = по-бързо и
+                по-реалистично потребителско изживяване.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">3</span>
+              <p class="step-text">
+                <strong>WER (Word Error Rate):</strong> Общоиндустриалният
+                показател за точност. Измерва процента думи в изхода,
+                различаващи се от референтния текст. По-нисък WER = по-добра
+                точност.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">4</span>
+              <p class="step-text">
+                <strong>Езикова поддръжка:</strong> Дори Whisper от OpenAI е
+                силно насочен към английски, френски и испански. За по-редки
+                езици са необходими допълнителни техники за фина настройка.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- API layers image -->
+      <div
+        style="
+          border: 2px solid var(--black);
+          background: var(--white);
+          padding: 1.2rem;
+          text-align: center;
+          margin-bottom: 1.5rem;
+        "
+      >
+        <img
+          src="https://cdn.prod.website-files.com/645a730e85c9b4dfd57de5a1/67841079a1722424b5a2ad7b_64f89c588152eed8bc626de7_Table%2520to%2520compare%2520-%252019.png"
+          alt="Сравнителна таблица на STT модели"
+          style="max-width: 100%; height: auto; display: block; margin: 0 auto"
+          onerror="this.style.display = 'none'"
+        />
+        <p
+          style="
+            font-size: 11px;
+            color: var(--gray-muted);
+            margin-top: 0.6rem;
+            font-family: &quot;Courier New&quot;, monospace;
+            letter-spacing: 1px;
+          "
+        >
+          // СРАВНЕНИЕ НА STT АРХИТЕКТУРИ
+        </p>
+      </div>
+
+      <!-- Аудио интелигентност -->
+      <div class="info-box">
+        <p class="info-box-label">
+          // Аудио интелигентност — допълнителни функции
+        </p>
+        <p class="info-box-text">
+          За все по-голям брой случаи на употреба само транскрипцията не е
+          достатъчна. Повечето търговски STT доставчици предлагат допълнителни
+          функции (add-ons):
+          <br /><br />
+          <strong>Водене на дневник на говорещия</strong> — идентификация кой
+          говори кога &nbsp;|&nbsp; <strong>Времеви отпечатъци</strong> — на
+          ниво дума &nbsp;|&nbsp; <strong>Анализ на настроенията</strong> —
+          емоционален тон &nbsp;|&nbsp; <strong>Обобщаване</strong> —
+          автоматично резюме &nbsp;|&nbsp; <strong>Семантично търсене</strong> —
+          търсене по смисъл &nbsp;|&nbsp; <strong>Превод</strong> — в реално
+          време &nbsp;|&nbsp; <strong>Персонализиран речник</strong> —
+          специфична лексика
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 07: Защо е важно STT -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">07 —</span>
         <h2 class="section-title">Защо е важно STT?</h2>
       </div>
       <p class="section-intro">
-        Speech-to-Text има широко приложение — от медицински диктовки до
-        автоматизирани анализи на разговори и създаване на търсими текстови
-        данни от аудио.
+        STT е изключително гъвкава технология, отключваща редица случаи на
+        употреба в различни индустрии — от достъпност до бизнес автоматизация.
       </p>
       <div class="info-box">
-        <p class="info-box-label">// Примери за употреба</p>
+        <p class="info-box-label">// Случаи на употреба</p>
         <div class="pipeline-steps">
           <div class="pipeline-step">
             <span class="step-num">1</span>
             <p class="step-text">
-              <strong>За хора с дислексия или други обучителни разлики:</strong>
-              Съчетаването на текст с аудио създава двуканално преживяване,
-              което укрепва разбирането. Вместо да се борят с разчитането на
-              писмени инструкции или само с устно съдържание, те могат да
-              усвояват информация по начин, който е най-подходящ за тях, като по
-              този начин се подобряват както разбирането, така и запаметяването.
+              <strong>За хора с дислексия:</strong> Двуканалното аудио+текст
+              преживяване укрепва разбирането и запаметяването, като позволява
+              усвояване по най-подходящия за тях начин.
             </p>
           </div>
           <div class="pipeline-step">
             <span class="step-num">2</span>
             <p class="step-text">
               <strong>Хора, за които езикът не е роден:</strong>
-              Живото транскрибиране забавя темпото на разговора.
-              Реалновременните субтитри им позволяват да следват разговора
-              по-лесно, да уловят непознати думи и да се върнат към важни точки
-              без напрежението да трябва да следят всичко в реално време. Този
-              вид подкрепа намалява триенето в многоезични среди, помагайки на
-              екипите да сътрудничат по-ефективно през езиковите бариери.
+              Реалновременните субтитри намаляват триенето в многоезична среда и
+              помагат за по-ефективно сътрудничество.
             </p>
           </div>
           <div class="pipeline-step">
             <span class="step-num">3</span>
             <p class="step-text">
-              <strong>За хора с увреждания на слуха:</strong>
-              Технологията за преобразуване на реч в текст (STT) осигурява
-              критичен достъп. Живите субтитри за видео разговори, срещи и
-              мултимедийно съдържание гарантират, че устната комуникация вече не
-              е извън обсега. Независимо дали става въпрос за среща в Zoom или
-              за разговор лице в лице с микрофон, STT може да превърне гласа в
-              видима и четима информация моментално.
+              <strong>За хора с увреждания на слуха:</strong> STT превръща гласа
+              в видима информация моментално — критичен достъп за видео
+              разговори, срещи и мултимедийно съдържание.
+            </p>
+          </div>
+          <div class="pipeline-step">
+            <span class="step-num">4</span>
+            <p class="step-text">
+              <strong>Транскрипционни услуги:</strong> Писмени транскрипции на
+              интервюта, лекции и срещи.
+            </p>
+          </div>
+          <div class="pipeline-step">
+            <span class="step-num">5</span>
+            <p class="step-text">
+              <strong>Автоматизация на кол центрове:</strong> Преобразуване на
+              аудио записи на взаимодействия с клиенти в текст за анализ и
+              обработка.
+            </p>
+          </div>
+          <div class="pipeline-step">
+            <span class="step-num">6</span>
+            <p class="step-text">
+              <strong>Гласови бележки и диктовка:</strong> Потребителите
+              диктуват бележки, съобщения или имейли и ги конвертират в писмен
+              текст.
+            </p>
+          </div>
+          <div class="pipeline-step">
+            <span class="step-num">7</span>
+            <p class="step-text">
+              <strong>Субтитри в реално време:</strong> За събития на живо,
+              конференции, уебинари или видеоклипове.
+            </p>
+          </div>
+          <div class="pipeline-step">
+            <span class="step-num">8</span>
+            <p class="step-text">
+              <strong>Анализ на речта:</strong> Анализ на настроенията, обратна
+              връзка от клиенти или пазарно проучване чрез записан звук.
             </p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- SECTION 08: Пазарен преглед -->
     <section class="section">
       <div class="section-header">
-        <span class="section-number">04 —</span>
-        <h2 class="section-title">Компании и платформи</h2>
+        <span class="section-number">08 —</span>
+        <h2 class="section-title">Пазарен преглед</h2>
       </div>
       <p class="section-intro">
-        Компании като Google, Microsoft, Amazon и IBM® предлагат софтуер за преобразуване
-        на реч в текст като API през облака, което му позволява да се използва съвместно
-        с други приложения, инструменти и устройства.
+        При изграждане на STT софтуер, имате две основни възможности: да го
+        изградите вътрешно върху open-source модел или да изберете специализиран
+        API доставчик.
       </p>
-      <div class="info-box">
-        <p class="info-box-label">// Мобилни устройства</p>
-        <p class="info-box-text">
-          Apple iPhone имат функция за диктовка, която интегрира технологията за
-          преобразуване на реч в текст, вградена в iOS. Потребителите на Android могат
-          да изтеглят приложения като Gboard за функции за преобразуване на реч в текст.
-          Някои устройства Pixel позволяват на потребителите да пишат с глас чрез Асистента.
-        </p>
+
+      <div class="pipeline-columns">
+        <div class="pipeline-col">
+          <p class="pipeline-col-label">// Open-source решения</p>
+          <div class="pipeline-steps">
+            <div class="pipeline-step">
+              <span class="step-num">+</span>
+              <p class="step-text">Пълен контрол и адаптивност над модела.</p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">+</span>
+              <p class="step-text">
+                <strong>OpenAI Whisper</strong> — обучен върху 680 000 часа
+                данни, смятан за най-производителен open-source модел.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">−</span>
+              <p class="step-text">
+                Необходимо е да поемете цялата тежест на хостването,
+                оптимизирането и поддръжката.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">−</span>
+              <p class="step-text">
+                Моделите могат да бъдат бавни, с ограничени функции и податливи
+                на грешки без специален AI екип.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">−</span>
+              <p class="step-text">
+                По-дълго време за пускане на пазара — конкурентите могат да
+                изберат готово решение и да продължат напред.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="pipeline-col pipeline-col-last">
+          <p class="pipeline-col-label">// Търговски API доставчици</p>
+          <div class="pipeline-steps">
+            <div class="pipeline-step">
+              <span class="step-num">+</span>
+              <p class="step-text">
+                Предварително пакетирани решения с оптимизирани модели, редовни
+                актуализации и клиентска поддръжка.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">+</span>
+              <p class="step-text">
+                Специализираните доставчици постигат WER от 1–10% срещу 10–18%
+                при големите технологични компании (Google, AWS, Microsoft).
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">+</span>
+              <p class="step-text">
+                Ценообразуване от едва $0.26/час до $1.44/час при премиум
+                доставчици.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">+</span>
+              <p class="step-text">
+                Поддръжка на 12 до 99+ езика в зависимост от доставчика.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">!</span>
+              <p class="step-text">
+                <strong>Внимание:</strong> Скорост на транскрипция варира от 10
+                секунди до 30+ минути. Проверявайте внимателно преди избор.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="info-box">
-        <p class="info-box-label">// Видове софтуер</p>
+
+      <!-- Сигурност -->
+      <div class="info-box" style="margin-top: 1.5rem">
+        <p class="info-box-label">// Сигурност на данните</p>
         <p class="info-box-text">
-          Съществуват различни опции както за софтуер с отворен код, така и за собствен
-          софтуер за преобразуване на реч в текст.
+          При избор на STT решение, архитектурата на хостинга играе важна роля:
+          <strong>облачна многонаемателска (SaaS)</strong>,
+          <strong>облачна еднонаемателска</strong>, <strong>локална</strong> или
+          <strong>air-gap</strong>. Важно е да се информирате за политиките за
+          обработка на данни — не винаги искате поверителните корпоративни данни
+          да се използват за обучение на модели.
         </p>
       </div>
     </section>
+
+    <!-- SECTION 09: Речник -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">09 —</span>
+        <h2 class="section-title">Речник на STT термините</h2>
+      </div>
+      <p class="section-intro">
+        Пълен речник на ключовите понятия в областта на Speech-to-Text и
+        изкуствения интелект.
+      </p>
+
+      <div
+        class="models-table"
+        style="border: 1px solid var(--black); overflow: hidden"
+      >
+        <table class="models-table">
+          <thead>
+            <tr>
+              <th style="width: 30%">Термин</th>
+              <th>Определение</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="model-name">STT / ASR</span></td>
+              <td>
+                Технологията, преобразуваща говорим език в писмен текст
+                (Automatic Speech Recognition).
+              </td>
+            </tr>
+            <tr>
+              <td><span class="model-name">NLP</span></td>
+              <td>
+                Обработка на естествен език — подобласт на AI, фокусирана върху
+                взаимодействията между компютрите и човешкия език.
+              </td>
+            </tr>
+            <tr>
+              <td><span class="model-name">Фонема</span></td>
+              <td>
+                Най-малката звукова единица в даден език, представена със
+                специфичен символ и отличаваща една дума от друга.
+              </td>
+            </tr>
+            <tr>
+              <td><span class="model-name">Трансформър</span></td>
+              <td>
+                Архитектура на невронна мрежа с механизъм за self-attention,
+                позволяващ улавяне на взаимовръзките и зависимостите в входната
+                последователност.
+              </td>
+            </tr>
+            <tr>
+              <td><span class="model-name">WER</span></td>
+              <td>
+                Word Error Rate — показател за точност, измерващ процента думи в
+                изхода, различаващи се от референтния текст.
+              </td>
+            </tr>
+            <tr>
+              <td><span class="model-name">HMM</span></td>
+              <td>
+                Скрит Марковски Модел — ранен статистически метод за
+                разпознаване на реч.
+              </td>
+            </tr>
+            <tr>
+              <td><span class="model-name">DNN / RNN</span></td>
+              <td>
+                Дълбоки / Рекурентни невронни мрежи — алгоритми за машинно
+                обучение, заменили статистическите модели в ASR.
+              </td>
+            </tr>
+            <tr>
+              <td><span class="model-name">MFCC</span></td>
+              <td>
+                Мел-честотни кепстрални коефициенти — широко използвани
+                характеристики при извличане на признаци от аудио сигнал.
+              </td>
+            </tr>
+            <tr>
+              <td><span class="model-name">Латентност</span></td>
+              <td>
+                Закъснението между получения входен сигнал и генерирания изход.
+                По-ниска латентност = по-бързо и по-реалистично изживяване.
+              </td>
+            </tr>
+            <tr>
+              <td><span class="model-name">Вграждане (Embedding)</span></td>
+              <td>
+                Числово представяне на обект (дума, изображение) в по-нискомерно
+                пространство, запазващо семантичните прилики.
+              </td>
+            </tr>
+            <tr>
+              <td><span class="model-name">Фина настройка</span></td>
+              <td>
+                Адаптиране на предварително обучена невронна мрежа за ново
+                приложение чрез обучение върху специфични данни.
+              </td>
+            </tr>
+            <tr>
+              <td><span class="model-name">Дневник на говорещия</span></td>
+              <td>
+                Процесът на разделяне и идентифициране на говорещия в запис или
+                аудио поток.
+              </td>
+            </tr>
+            <tr>
+              <td><span class="model-name">LLM</span></td>
+              <td>
+                Модел на голям език — системи като GPT, обучени върху огромни
+                количества текстови данни за генериране на текст и NLP задачи.
+              </td>
+            </tr>
+            <tr>
+              <td><span class="model-name">Омофони</span></td>
+              <td>
+                Думи, звучащи еднакво, но с различно значение —
+                предизвикателство за STT системите при постобработката.
+              </td>
+            </tr>
+            <tr>
+              <td><span class="model-name">Синтез на реч</span></td>
+              <td>
+                Генериране на говорим език от писмен текст — известен като
+                Text-to-Speech (TTS).
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 10: Компании и платформи -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">10 —</span>
+        <h2 class="section-title">Компании и платформи</h2>
+      </div>
+      <p class="section-intro">
+        Компании като Google, Microsoft, Amazon и IBM предлагат STT като облачен
+        API, позволяващ интеграция с приложения, инструменти и устройства.
+      </p>
+
+      <div class="pipeline-columns">
+        <div class="pipeline-col">
+          <p class="pipeline-col-label">// Open-source</p>
+          <div class="pipeline-steps">
+            <div class="pipeline-step">
+              <span class="step-num">✦</span>
+              <p class="step-text">
+                <strong>OpenAI Whisper:</strong> Многоезичен модел с висока
+                точност дори при шум. Обучен върху 680 000 часа данни.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">✦</span>
+              <p class="step-text">
+                <strong>Mozilla DeepSpeech:</strong> Пълен контрол над данните
+                за разработчици, изграждащи от нулата.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="pipeline-col pipeline-col-last">
+          <p class="pipeline-col-label">// Облачни API</p>
+          <div class="pipeline-steps">
+            <div class="pipeline-step">
+              <span class="step-num">✦</span>
+              <p class="step-text">
+                <strong>Google Speech-to-Text:</strong> 125+ езика, интеграция с
+                Google Cloud екосистемата.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">✦</span>
+              <p class="step-text">
+                <strong>Amazon Transcribe / Azure Speech / IBM Watson:</strong>
+                Корпоративни решения с висока мащабируемост и сигурност.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box" style="margin-top: 1.5rem">
+        <p class="info-box-label">// Мобилни устройства</p>
+        <p class="info-box-text">
+          Apple iPhone — вградена диктовка директно в iOS. Android — приложения
+          като Gboard за гласово въвеждане. Устройства Pixel — писане с глас
+          чрез Асистента.
+        </p>
+      </div>
+    </section>
+
     <div class="quicklinks-section">
       <p class="quicklinks-label">Продължи към</p>
       <div class="quicklinks-grid">
