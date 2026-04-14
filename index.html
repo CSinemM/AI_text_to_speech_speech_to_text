@@ -3,13 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Изкуствен интелект</title>
+    <title>Изкуствен интелект — STT & TTS</title>
     <link rel="stylesheet" href="assets/style.css" />
   </head>
   <body>
     <nav class="navbar">
       <a href="index.html" class="navbar-logo">Изкуствен интелект</a>
-
       <ul class="navbar-links">
         <li>
           <a class="fancy" href="index.html"
@@ -17,14 +16,10 @@
           >
         </li>
         <li>
-          <a class="fancy" href="stt.html"
-            ><span class="text">Speech-to-Text</span></a
-          >
+          <a class="fancy" href="stt.html"><span class="text">STT</span></a>
         </li>
         <li>
-          <a class="fancy" href="tts.html"
-            ><span class="text">Text-to-Speech</span></a
-          >
+          <a class="fancy" href="tts.html"><span class="text">TTS</span></a>
         </li>
         <li>
           <a class="fancy" href="models.html"
@@ -35,6 +30,9 @@
           <a class="fancy" href="applications.html"
             ><span class="text">Приложения</span></a
           >
+        </li>
+        <li>
+          <a class="fancy" href="demo.html"><span class="text">Демо</span></a>
         </li>
         <li>
           <a class="fancy" href="sources.html"
@@ -48,9 +46,8 @@
       <div class="hero-left">
         <h1 class="hero-title">
           Как ИИ<br />
-          <br />слуша <br />
-          <br />
-          и говори?
+          <span>слуша</span> и<br />
+          <span>говори?</span>
         </h1>
         <p class="hero-description">
           <strong>Speech-to-Text и Text-to-Speech</strong> — изследване на
@@ -60,13 +57,301 @@
         <div class="hero-buttons">
           <a href="stt.html" class="btn btn-dark">Какво е STT?</a>
           <a href="tts.html" class="btn btn-outline">Какво е TTS?</a>
+          <a href="demo.html" class="btn btn-outline">▶ Демо</a>
         </div>
       </div>
 
       <div class="hero-right">
-        <div class="hero-illustration">
-          <img src="assets/stt.png" alt="Robot Cat" class="hero-img" />
-        </div>
+        <svg
+          class="hero-waveform"
+          viewBox="0 0 400 220"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <!-- Static waveform illustration -->
+          <text
+            x="200"
+            y="30"
+            text-anchor="middle"
+            font-family="Courier New"
+            font-size="11"
+            fill="#888"
+            letter-spacing="2"
+          >
+            // AUDIO SIGNAL
+          </text>
+          <!-- Waveform bars -->
+          <g transform="translate(20, 110)">
+            <rect
+              x="0"
+              y="-8"
+              width="5"
+              height="16"
+              fill="#111"
+              opacity="0.3"
+            />
+            <rect
+              x="10"
+              y="-20"
+              width="5"
+              height="40"
+              fill="#111"
+              opacity="0.5"
+            />
+            <rect
+              x="20"
+              y="-35"
+              width="5"
+              height="70"
+              fill="#111"
+              opacity="0.7"
+            />
+            <rect x="30" y="-50" width="5" height="100" fill="#111" />
+            <rect
+              x="40"
+              y="-40"
+              width="5"
+              height="80"
+              fill="#111"
+              opacity="0.8"
+            />
+            <rect x="50" y="-60" width="5" height="120" fill="#111" />
+            <rect
+              x="60"
+              y="-45"
+              width="5"
+              height="90"
+              fill="#111"
+              opacity="0.9"
+            />
+            <rect x="70" y="-55" width="5" height="110" fill="#111" />
+            <rect
+              x="80"
+              y="-30"
+              width="5"
+              height="60"
+              fill="#111"
+              opacity="0.6"
+            />
+            <rect x="90" y="-65" width="5" height="130" fill="#111" />
+            <rect
+              x="100"
+              y="-50"
+              width="5"
+              height="100"
+              fill="#111"
+              opacity="0.8"
+            />
+            <rect x="110" y="-70" width="5" height="140" fill="#111" />
+            <rect
+              x="120"
+              y="-55"
+              width="5"
+              height="110"
+              fill="#111"
+              opacity="0.9"
+            />
+            <rect
+              x="130"
+              y="-45"
+              width="5"
+              height="90"
+              fill="#111"
+              opacity="0.7"
+            />
+            <rect x="140" y="-60" width="5" height="120" fill="#111" />
+            <rect x="150" y="-70" width="5" height="140" fill="#111" />
+            <rect
+              x="160"
+              y="-50"
+              width="5"
+              height="100"
+              fill="#111"
+              opacity="0.8"
+            />
+            <rect
+              x="170"
+              y="-35"
+              width="5"
+              height="70"
+              fill="#111"
+              opacity="0.6"
+            />
+            <rect
+              x="180"
+              y="-55"
+              width="5"
+              height="110"
+              fill="#111"
+              opacity="0.9"
+            />
+            <rect
+              x="190"
+              y="-40"
+              width="5"
+              height="80"
+              fill="#111"
+              opacity="0.7"
+            />
+            <rect
+              x="200"
+              y="-25"
+              width="5"
+              height="50"
+              fill="#111"
+              opacity="0.5"
+            />
+            <rect
+              x="210"
+              y="-15"
+              width="5"
+              height="30"
+              fill="#111"
+              opacity="0.4"
+            />
+            <rect
+              x="220"
+              y="-30"
+              width="5"
+              height="60"
+              fill="#111"
+              opacity="0.6"
+            />
+            <rect
+              x="230"
+              y="-20"
+              width="5"
+              height="40"
+              fill="#111"
+              opacity="0.5"
+            />
+            <rect
+              x="240"
+              y="-10"
+              width="5"
+              height="20"
+              fill="#111"
+              opacity="0.3"
+            />
+            <rect
+              x="250"
+              y="-5"
+              width="5"
+              height="10"
+              fill="#111"
+              opacity="0.2"
+            />
+            <rect
+              x="260"
+              y="-15"
+              width="5"
+              height="30"
+              fill="#111"
+              opacity="0.4"
+            />
+            <rect
+              x="270"
+              y="-8"
+              width="5"
+              height="16"
+              fill="#111"
+              opacity="0.3"
+            />
+            <rect
+              x="280"
+              y="-20"
+              width="5"
+              height="40"
+              fill="#111"
+              opacity="0.5"
+            />
+            <rect
+              x="290"
+              y="-12"
+              width="5"
+              height="24"
+              fill="#111"
+              opacity="0.35"
+            />
+            <rect
+              x="300"
+              y="-5"
+              width="5"
+              height="10"
+              fill="#111"
+              opacity="0.2"
+            />
+            <rect
+              x="310"
+              y="-8"
+              width="5"
+              height="16"
+              fill="#111"
+              opacity="0.25"
+            />
+            <rect
+              x="320"
+              y="-3"
+              width="5"
+              height="6"
+              fill="#111"
+              opacity="0.15"
+            />
+            <rect
+              x="330"
+              y="-5"
+              width="5"
+              height="10"
+              fill="#111"
+              opacity="0.2"
+            />
+            <rect
+              x="340"
+              y="-2"
+              width="5"
+              height="4"
+              fill="#111"
+              opacity="0.1"
+            />
+            <rect
+              x="350"
+              y="-4"
+              width="5"
+              height="8"
+              fill="#111"
+              opacity="0.15"
+            />
+            <rect
+              x="360"
+              y="-2"
+              width="5"
+              height="4"
+              fill="#111"
+              opacity="0.1"
+            />
+          </g>
+          <!-- Label -->
+          <text
+            x="200"
+            y="190"
+            text-anchor="middle"
+            font-family="Courier New"
+            font-size="10"
+            fill="#888"
+            letter-spacing="1"
+          >
+            SPEECH → TEXT → SPEECH
+          </text>
+          <line
+            x1="20"
+            y1="200"
+            x2="380"
+            y2="200"
+            stroke="#111"
+            stroke-width="1"
+            opacity="0.2"
+          />
+        </svg>
       </div>
     </section>
 
@@ -81,8 +366,8 @@
         <a href="models.html" class="quicklink-item"
           >AI Модели <span class="arrow">↗</span></a
         >
-        <a href="applications.html" class="quicklink-item"
-          >Приложения <span class="arrow">↗</span></a
+        <a href="demo.html" class="quicklink-item"
+          >Демо <span class="arrow">↗</span></a
         >
       </div>
     </div>
@@ -96,14 +381,12 @@
         <div class="topic-card">
           <div class="topic-card-bar topic-card-bar-stt"></div>
           <div class="topic-card-body">
+            <p class="topic-type">Разпознаване</p>
             <h3 class="topic-name">Speech-to-Text</h3>
             <p class="topic-description">
-              Преобразуването на реч в текст е софтуер за разпознаване на реч,
-              който позволява разпознаването и превода на говорим език в текст
-              чрез компютърна лингвистика. Известен е още като разпознаване на
-              реч или компютърно разпознаване на реч. Специфични приложения,
-              инструменти и устройства могат да транскрибират аудио потоци в
-              реално време, за да показват текст и да действат върху него.
+              Преобразуването на реч в текст (ASR) е AI технология, улавяща
+              говорим език и превръщаща го в писмен текст в реално време. Ядрото
+              на всеки гласов асистент, субтитрираща система и диктовка.
             </p>
             <a href="stt.html" class="topic-link">Прочети повече →</a>
           </div>
@@ -111,25 +394,24 @@
         <div class="topic-card">
           <div class="topic-card-bar topic-card-bar-tts"></div>
           <div class="topic-card-body">
+            <p class="topic-type">Синтез</p>
             <h3 class="topic-name">Text-to-Speech</h3>
             <p class="topic-description">
-              AI текст в реч (TTS) е технология, която преобразува писмен текст
-              в говорим звук. Вие му давате думи. Той ви дава глас, който чете
-              тези думи на глас. Старите системи за синтез на реч (TTS) са
-              съединявали предварително записани звукови клипове. Те са звучали
-              накъсано и роботизирано. Вероятно сте чували тези гласове на GPS
-              устройства или автоматизирани менюта на телефони.
+              AI текст в реч (TTS) преобразува писмен текст в говорим звук. От
+              WaveNet и Tacotron до съвременните трансформъри — технологията,
+              която дава глас на изкуствения интелект.
             </p>
             <a href="tts.html" class="topic-link">Прочети повече →</a>
           </div>
         </div>
-        <div class="topic-card topic-card-last">
+        <div class="topic-card">
           <div class="topic-card-bar topic-card-bar-apps"></div>
           <div class="topic-card-body">
+            <p class="topic-type">Практика</p>
             <h3 class="topic-name">Приложения</h3>
             <p class="topic-description">
-              Използването на TTS се увеличи драстично през последните няколко
-              години. Има няколко причини за това.
+              От гласови асистенти и медицинска диктовка до автоматични субтитри
+              и образование — STT и TTS технологиите са навсякъде около нас.
             </p>
             <a href="applications.html" class="topic-link">Прочети повече →</a>
           </div>
@@ -137,11 +419,56 @@
       </div>
     </section>
 
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">02 —</span>
+        <h2 class="section-title">Интерактивно демо</h2>
+      </div>
+      <p class="section-intro">
+        Изпробвайте STT и TTS технологиите директно в браузъра. Говорете,
+        слушайте, изследвайте.
+      </p>
+      <div
+        style="
+          border: 2px solid var(--black);
+          background: var(--white);
+          padding: 2rem;
+          text-align: center;
+        "
+      >
+        <p
+          style="
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+          "
+        >
+          Опитайте сами
+        </p>
+        <p
+          style="
+            color: var(--gray-text);
+            margin-bottom: 1.5rem;
+            font-size: 15px;
+          "
+        >
+          Речта ви → текст → обратно в реч. Всичко в браузъра.
+        </p>
+        <a
+          href="demo.html"
+          class="btn btn-dark"
+          style="font-size: 14px; padding: 14px 32px"
+          >▶ Отвори демото</a
+        >
+      </div>
+    </section>
+
     <footer class="footer">
       <div class="footer-left">
         <p class="footer-logo">Изкуствен интелект</p>
         <p class="footer-tagline">
-          Speech-to-Text и Text-to-Speech: Как ИИ слуша и говори.<br />
+          Speech-to-Text и Text-to-Speech: Как ИИ слуша и говори.
         </p>
       </div>
       <div class="footer-right">
