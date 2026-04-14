@@ -1,0 +1,1426 @@
+<!doctype html>
+<html lang="bg">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Демо — STT & TTS</title>
+    <link rel="stylesheet" href="assets/style.css" />
+    <style>
+      .tab-bar {
+        display: flex;
+        border-bottom: 2px solid var(--black);
+        background: var(--white);
+      }
+      .tab-btn {
+        padding: 0.9rem 1.8rem;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-family: var(--font-sans);
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        border-right: 1px solid var(--border);
+        border-bottom: 3px solid transparent;
+        margin-bottom: -2px;
+        transition: all 0.15s;
+        color: var(--gray-muted);
+      }
+      .tab-btn.active {
+        color: var(--black);
+        border-bottom: 3px solid var(--black);
+        background: var(--cream);
+      }
+      .tab-btn:hover:not(.active) {
+        background: var(--cream);
+        color: var(--black);
+      }
+
+      .tab-panel {
+        display: none;
+      }
+      .tab-panel.active {
+        display: block;
+      }
+
+      .big-mic-btn {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 3px solid var(--black);
+        background: var(--cream);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        transition: all 0.2s;
+        flex-shrink: 0;
+      }
+      .big-mic-btn:hover {
+        background: var(--black);
+      }
+      .big-mic-btn.recording {
+        background: #c0392b;
+        border-color: #c0392b;
+        animation: pulse-ring 1.2s ease-out infinite;
+      }
+
+      @keyframes pulse-ring {
+        0% {
+          box-shadow: 0 0 0 0 rgba(192, 57, 43, 0.4);
+        }
+        70% {
+          box-shadow: 0 0 0 16px rgba(192, 57, 43, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(192, 57, 43, 0);
+        }
+      }
+
+      .mic-icon {
+        pointer-events: none;
+      }
+
+      .tts-voice-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        margin-bottom: 1rem;
+      }
+
+      .voice-card {
+        border: 1.5px solid var(--border);
+        padding: 10px 12px;
+        cursor: pointer;
+        background: var(--cream);
+        transition: all 0.15s;
+      }
+
+      .voice-card:hover {
+        border-color: var(--black);
+      }
+      .voice-card.selected {
+        border-color: var(--black);
+        background: var(--black);
+        color: var(--cream);
+      }
+
+      .voice-name {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        display: block;
+      }
+
+      .voice-lang {
+        font-size: 10px;
+        opacity: 0.6;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .rate-slider-wrap {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .rate-slider-wrap input[type="range"] {
+        flex: 1;
+        accent-color: var(--black);
+      }
+      .rate-val {
+        font-size: 13px;
+        font-weight: 700;
+        min-width: 36px;
+        text-align: right;
+      }
+
+      .pipeline-visual {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        margin: 1.5rem 0;
+        overflow-x: auto;
+      }
+      .pipe-step {
+        flex-shrink: 0;
+        padding: 10px 16px;
+        border: 1.5px solid var(--black);
+        background: var(--cream);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        text-align: center;
+        transition: background 0.2s;
+      }
+      .pipe-step.active-step {
+        background: var(--black);
+        color: var(--cream);
+      }
+      .pipe-arrow {
+        flex-shrink: 0;
+        font-size: 16px;
+        padding: 0 6px;
+        color: var(--gray-light);
+      }
+
+      .transcript-highlight {
+        background: var(--cream);
+        border-left: 4px solid var(--black);
+        padding: 12px 16px;
+        font-size: 16px;
+        line-height: 1.8;
+        min-height: 80px;
+        word-break: break-word;
+      }
+
+      .transcript-highlight .word {
+        display: inline;
+        transition: background 0.2s;
+      }
+      .transcript-highlight .word.spoken {
+        background: rgba(17, 17, 17, 0.1);
+        border-radius: 2px;
+      }
+
+      .copy-btn {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        border: 1.5px solid var(--black);
+        background: transparent;
+        cursor: pointer;
+        font-family: var(--font-sans);
+        transition: all 0.15s;
+      }
+      .copy-btn:hover {
+        background: var(--black);
+        color: var(--cream);
+      }
+
+      .char-count {
+        font-size: 11px;
+        color: var(--gray-muted);
+        font-family: "Courier New", monospace;
+      }
+
+      .error-msg {
+        background: #fef2f2;
+        border: 1.5px solid #c0392b;
+        padding: 10px 14px;
+        font-size: 13px;
+        color: #c0392b;
+        margin-top: 0.5rem;
+        display: none;
+      }
+
+      .section-divider {
+        height: 1px;
+        background: var(--border);
+        margin: 1.2rem 0;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="index.html" class="navbar-logo">Изкуствен интелект</a>
+      <ul class="navbar-links">
+        <li>
+          <a class="fancy" href="index.html"
+            ><span class="text">Начало</span></a
+          >
+        </li>
+        <li>
+          <a class="fancy" href="stt.html"><span class="text">STT</span></a>
+        </li>
+        <li>
+          <a class="fancy" href="tts.html"><span class="text">TTS</span></a>
+        </li>
+        <li>
+          <a class="fancy" href="models.html"
+            ><span class="text">Модели</span></a
+          >
+        </li>
+        <li>
+          <a class="fancy" href="applications.html"
+            ><span class="text">Приложения</span></a
+          >
+        </li>
+        <li>
+          <a class="fancy" href="demo.html"><span class="text">Демо</span></a>
+        </li>
+        <li>
+          <a class="fancy" href="sources.html"
+            ><span class="text">Източници</span></a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <div class="page-header">
+      <h1 class="page-header-title">Интерактивно Демо</h1>
+      <p class="page-header-desc">
+        Изпробвайте STT и TTS директно в браузъра. Говорете — и вижте как ИИ
+        превръща речта ви в текст. Въведете текст — и чуйте как звучи
+        синтезираният глас.
+      </p>
+    </div>
+
+    <!-- PIPELINE VISUAL -->
+    <section class="section" style="padding-bottom: 1.5rem">
+      <div class="section-header">
+        <span class="section-number">00 —</span>
+        <h2 class="section-title">Как работи конвейерът</h2>
+      </div>
+      <div class="pipeline-visual" id="pipelineViz">
+        <div class="pipe-step" id="ps-mic">🎤 Микрофон</div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step" id="ps-audio">Аудио сигнал</div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step" id="ps-asr">ASR модел</div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step" id="ps-text">Текст</div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step" id="ps-tts">TTS синтез</div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step" id="ps-out">🔊 Изход</div>
+      </div>
+      <p class="demo-note">
+        // Стъпките се осветяват в реално време при използване на демото
+        по-долу.
+      </p>
+    </section>
+
+    <!-- TABS -->
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('stt')">
+        🎤 Speech-to-Text
+      </button>
+      <button class="tab-btn" onclick="switchTab('tts')">
+        🔊 Text-to-Speech
+      </button>
+      <button class="tab-btn" onclick="switchTab('full')">⟳ Пълен цикъл</button>
+    </div>
+
+    <!-- ===== STT TAB ===== -->
+    <div class="tab-panel active" id="tab-stt">
+      <section class="section">
+        <div class="section-header">
+          <span class="section-number">01 —</span>
+          <h2 class="section-title">Speech-to-Text демо</h2>
+        </div>
+        <p class="section-intro">
+          Натиснете микрофона, говорете на български или английски, и
+          наблюдавайте как речта ви се превръща в текст в реално време.
+        </p>
+
+        <div class="demo-section">
+          <div class="demo-header">
+            <span class="demo-header-label">// STT</span>
+            <span class="demo-header-title">Разпознаване на реч</span>
+          </div>
+          <div class="demo-body">
+            <!-- Status + mic -->
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 1.5rem;
+                margin-bottom: 1.5rem;
+              "
+            >
+              <button
+                class="big-mic-btn"
+                id="micBtn"
+                onclick="toggleSTT()"
+                title="Натисни за запис"
+              >
+                <svg
+                  class="mic-icon"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"
+                  />
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                  <line x1="12" y1="19" x2="12" y2="23" />
+                  <line x1="8" y1="23" x2="16" y2="23" />
+                </svg>
+              </button>
+              <div>
+                <div class="demo-status idle" id="sttStatus">
+                  <span class="dot"></span>
+                  <span id="sttStatusText">Готов за запис</span>
+                </div>
+                <div class="wave-bars" id="waveBars" style="margin-top: 8px">
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                </div>
+              </div>
+              <div style="margin-left: auto; text-align: right">
+                <label class="demo-label">Език</label>
+                <select
+                  class="demo-select"
+                  id="sttLang"
+                  style="min-width: 130px"
+                >
+                  <option value="bg-BG">Български</option>
+                  <option value="en-US">English (US)</option>
+                  <option value="en-GB">English (UK)</option>
+                  <option value="de-DE">Deutsch</option>
+                  <option value="fr-FR">Français</option>
+                  <option value="es-ES">Español</option>
+                </select>
+              </div>
+            </div>
+
+            <div id="sttError" class="error-msg"></div>
+
+            <!-- Output -->
+            <label class="demo-label">Транскрипция</label>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 0.4rem;
+              "
+            >
+              <span
+                class="demo-note"
+                id="sttInterim"
+                style="font-style: italic; color: var(--gray-muted)"
+              ></span>
+              <div style="display: flex; gap: 8px; align-items: center">
+                <span class="char-count" id="charCount">0 знака</span>
+                <button class="copy-btn" onclick="copyTranscript()">
+                  Копирай
+                </button>
+                <button class="copy-btn" onclick="clearTranscript()">
+                  Изчисти
+                </button>
+              </div>
+            </div>
+            <div class="transcript-highlight" id="sttOutput">
+              <span style="color: var(--gray-muted); font-style: italic"
+                >Вашата реч ще се появи тук...</span
+              >
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- Stats -->
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+                margin-top: 0.5rem;
+              "
+            >
+              <div
+                style="
+                  background: var(--cream);
+                  border: 1px solid var(--border);
+                  padding: 12px;
+                "
+              >
+                <div class="demo-note">// Думи</div>
+                <div
+                  style="
+                    font-size: 28px;
+                    font-weight: 700;
+                    font-family: var(--font-display);
+                  "
+                  id="wordCount"
+                >
+                  0
+                </div>
+              </div>
+              <div
+                style="
+                  background: var(--cream);
+                  border: 1px solid var(--border);
+                  padding: 12px;
+                "
+              >
+                <div class="demo-note">// Изречения</div>
+                <div
+                  style="
+                    font-size: 28px;
+                    font-weight: 700;
+                    font-family: var(--font-display);
+                  "
+                  id="sentCount"
+                >
+                  0
+                </div>
+              </div>
+              <div
+                style="
+                  background: var(--cream);
+                  border: 1px solid var(--border);
+                  padding: 12px;
+                "
+              >
+                <div class="demo-note">// Увереност</div>
+                <div
+                  style="
+                    font-size: 28px;
+                    font-weight: 700;
+                    font-family: var(--font-display);
+                  "
+                  id="confidence"
+                >
+                  —
+                </div>
+              </div>
+            </div>
+
+            <p class="demo-note" style="margin-top: 1rem">
+              // Използва Web Speech API (Chrome/Edge). Разпознаването е локално
+              или чрез браузърен API — без изпращане към сървър.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== TTS TAB ===== -->
+    <div class="tab-panel" id="tab-tts">
+      <section class="section">
+        <div class="section-header">
+          <span class="section-number">02 —</span>
+          <h2 class="section-title">Text-to-Speech демо</h2>
+        </div>
+        <p class="section-intro">
+          Въведете текст и изберете глас. Натиснете „Синтезирай" и чуйте
+          синтезираната реч директно в браузъра.
+        </p>
+
+        <div class="demo-section">
+          <div class="demo-header">
+            <span class="demo-header-label">// TTS</span>
+            <span class="demo-header-title">Синтез на реч</span>
+          </div>
+          <div class="demo-body">
+            <!-- Text input -->
+            <label class="demo-label">Текст за синтез</label>
+            <textarea
+              class="demo-textarea"
+              id="ttsInput"
+              rows="5"
+              placeholder="Въведете текст тук..."
+            >
+Изкуственият интелект е технология, която позволява на компютрите да разбират и генерират човешка реч. Speech-to-Text преобразува говорен език в текст, а Text-to-Speech превръща текст в говор.</textarea
+            >
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 0.4rem;
+                margin-bottom: 1rem;
+              "
+            >
+              <span class="char-count" id="ttsCharCount">0 знака</span>
+              <div style="display: flex; gap: 6px">
+                <button class="copy-btn" onclick="loadSample('bg')">
+                  BG пример
+                </button>
+                <button class="copy-btn" onclick="loadSample('en')">
+                  EN пример
+                </button>
+                <button
+                  class="copy-btn"
+                  onclick="
+                    document.getElementById('ttsInput').value = '';
+                    updateTTSCount();
+                  "
+                >
+                  Изчисти
+                </button>
+              </div>
+            </div>
+
+            <!-- Voice selection -->
+            <label class="demo-label">Глас</label>
+            <div class="tts-voice-grid" id="voiceGrid">
+              <div
+                style="
+                  color: var(--gray-muted);
+                  font-size: 13px;
+                  grid-column: 1/-1;
+                  padding: 8px;
+                "
+              >
+                Зареждане на гласове...
+              </div>
+            </div>
+
+            <!-- Controls -->
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+                margin-bottom: 1rem;
+              "
+            >
+              <div>
+                <label class="demo-label">Скорост</label>
+                <div class="rate-slider-wrap">
+                  <input
+                    type="range"
+                    min="0.5"
+                    max="2"
+                    step="0.1"
+                    value="1"
+                    id="rateSlider"
+                    oninput="
+                      document.getElementById('rateVal').textContent =
+                        this.value + '×'
+                    "
+                  />
+                  <span class="rate-val" id="rateVal">1×</span>
+                </div>
+              </div>
+              <div>
+                <label class="demo-label">Тон</label>
+                <div class="rate-slider-wrap">
+                  <input
+                    type="range"
+                    min="0.5"
+                    max="2"
+                    step="0.1"
+                    value="1"
+                    id="pitchSlider"
+                    oninput="
+                      document.getElementById('pitchVal').textContent =
+                        this.value + '×'
+                    "
+                  />
+                  <span class="rate-val" id="pitchVal">1×</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="demo-row">
+              <button
+                class="demo-btn active"
+                id="ttsPlayBtn"
+                onclick="speakText()"
+              >
+                ▶ Синтезирай и пусни
+              </button>
+              <button
+                class="demo-btn danger"
+                id="ttsStopBtn"
+                onclick="stopSpeech()"
+                disabled
+              >
+                ■ Стоп
+              </button>
+            </div>
+
+            <div
+              id="ttsStatus"
+              class="demo-status idle"
+              style="margin-top: 0.5rem"
+            >
+              <span class="dot"></span>
+              <span id="ttsStatusText">Готов</span>
+            </div>
+
+            <!-- Progress -->
+            <div class="demo-progress" style="margin-top: 1rem">
+              <div class="demo-progress-bar" id="ttsProgress"></div>
+            </div>
+
+            <!-- Highlighted text output -->
+            <label class="demo-label" style="margin-top: 0.5rem"
+              >Текущо изречено</label
+            >
+            <div
+              class="transcript-highlight"
+              id="ttsHighlight"
+              style="min-height: 50px"
+            >
+              <span style="color: var(--gray-muted); font-style: italic"
+                >Тук ще се показват думите при говоренето...</span
+              >
+            </div>
+
+            <p class="demo-note" style="margin-top: 1rem">
+              // Използва Web Speech Synthesis API. Наличните гласове зависят от
+              операционната система и браузъра.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== FULL CYCLE TAB ===== -->
+    <div class="tab-panel" id="tab-full">
+      <section class="section">
+        <div class="section-header">
+          <span class="section-number">03 —</span>
+          <h2 class="section-title">Пълен цикъл: Реч → Текст → Реч</h2>
+        </div>
+        <p class="section-intro">
+          Говорете — речта ви ще бъде разпозната (STT), след което автоматично
+          ще бъде синтезирана и изречена обратно (TTS). Целият STT → TTS
+          конвейер в едно.
+        </p>
+
+        <div class="demo-section">
+          <div class="demo-header">
+            <span class="demo-header-label">// FULL PIPELINE</span>
+            <span class="demo-header-title">STT → Текст → TTS</span>
+          </div>
+          <div class="demo-body">
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 1.5rem;
+                margin-bottom: 1.5rem;
+              "
+            >
+              <button
+                class="big-mic-btn"
+                id="fullMicBtn"
+                onclick="toggleFullCycle()"
+              >
+                <svg
+                  class="mic-icon"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"
+                  />
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                  <line x1="12" y1="19" x2="12" y2="23" />
+                  <line x1="8" y1="23" x2="16" y2="23" />
+                </svg>
+              </button>
+              <div>
+                <div class="demo-status idle" id="fullStatus">
+                  <span class="dot"></span>
+                  <span id="fullStatusText">Натиснете микрофона за начало</span>
+                </div>
+                <div
+                  class="wave-bars"
+                  id="fullWaveBars"
+                  style="margin-top: 8px"
+                >
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                </div>
+              </div>
+              <div style="margin-left: auto">
+                <label class="demo-label">Вход — език</label>
+                <select class="demo-select" id="fullLang">
+                  <option value="bg-BG">Български</option>
+                  <option value="en-US">English</option>
+                  <option value="de-DE">Deutsch</option>
+                  <option value="fr-FR">Français</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Pipeline steps -->
+            <div
+              class="pipeline-visual"
+              id="fullPipeline"
+              style="margin-bottom: 1.5rem"
+            >
+              <div class="pipe-step" id="fp-1">1. Запис</div>
+              <div class="pipe-arrow">→</div>
+              <div class="pipe-step" id="fp-2">2. STT</div>
+              <div class="pipe-arrow">→</div>
+              <div class="pipe-step" id="fp-3">3. Текст</div>
+              <div class="pipe-arrow">→</div>
+              <div class="pipe-step" id="fp-4">4. TTS</div>
+              <div class="pipe-arrow">→</div>
+              <div class="pipe-step" id="fp-5">5. Говор</div>
+            </div>
+
+            <!-- STT output -->
+            <label class="demo-label">🎤 Разпозната реч (STT)</label>
+            <div
+              class="transcript-highlight"
+              id="fullSTTOutput"
+              style="margin-bottom: 1rem"
+            >
+              <span style="color: var(--gray-muted); font-style: italic"
+                >Речта ви ще се появи тук...</span
+              >
+            </div>
+
+            <!-- TTS output indicator -->
+            <label class="demo-label">🔊 Синтезирана реч (TTS)</label>
+            <div
+              class="transcript-highlight"
+              id="fullTTSOutput"
+              style="margin-bottom: 1rem"
+            >
+              <span style="color: var(--gray-muted); font-style: italic"
+                >Текстът ще бъде изречен автоматично...</span
+              >
+            </div>
+
+            <!-- History -->
+            <label class="demo-label" style="margin-top: 0.5rem"
+              >История на разговора</label
+            >
+            <div
+              id="cycleHistory"
+              style="
+                border: 1px solid var(--border);
+                max-height: 200px;
+                overflow-y: auto;
+                background: var(--cream);
+              "
+            >
+              <div
+                style="
+                  padding: 12px;
+                  color: var(--gray-muted);
+                  font-size: 13px;
+                  font-style: italic;
+                "
+              >
+                Историята ще се появи тук...
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 8px; margin-top: 1rem">
+              <button class="copy-btn" onclick="clearFullCycle()">
+                Изчисти историята
+              </button>
+            </div>
+
+            <p class="demo-note" style="margin-top: 1rem">
+              // При спиране на записа (или пауза в речта), разпознатият текст
+              автоматично се предава към TTS.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- INFO SECTION -->
+    <section class="section" style="background: var(--white)">
+      <div class="section-header">
+        <span class="section-number">04 —</span>
+        <h2 class="section-title">Бележки за демото</h2>
+      </div>
+      <div class="pipeline-columns">
+        <div class="pipeline-col">
+          <p class="pipeline-col-label">// STT — Как работи тук</p>
+          <div class="pipeline-steps">
+            <div class="pipeline-step">
+              <span class="step-num">1</span>
+              <p class="step-text">
+                <strong>Web Speech API:</strong> Браузърът изпраща аудио потока
+                към разпознавателен двигател (Google за Chrome, Microsoft за
+                Edge).
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">2</span>
+              <p class="step-text">
+                <strong>Реално време:</strong> Резултатите идват постепенно —
+                interim (временни) и final (окончателни) транскрипции.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">3</span>
+              <p class="step-text">
+                <strong>Поддръжка:</strong> Работи в Chrome, Edge и Safari.
+                Firefox не поддържа Web Speech API.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="pipeline-col pipeline-col-last">
+          <p class="pipeline-col-label">// TTS — Как работи тук</p>
+          <div class="pipeline-steps">
+            <div class="pipeline-step">
+              <span class="step-num">1</span>
+              <p class="step-text">
+                <strong>Speech Synthesis API:</strong> Браузърът използва
+                системни гласове (инсталирани на ОС) за синтезиране на реч.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">2</span>
+              <p class="step-text">
+                <strong>Управление:</strong> Контролирате скоростта, тона и
+                избора на глас. Различни ОС имат различни налични гласове.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">3</span>
+              <p class="step-text">
+                <strong>Highlighting:</strong> Демото маркира думите в реално
+                време докато се изговарят.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="quicklinks-section">
+      <p class="quicklinks-label">Продължи към</p>
+      <div class="quicklinks-grid">
+        <a href="stt.html" class="quicklink-item"
+          >Speech-to-Text <span class="arrow">↗</span></a
+        >
+        <a href="tts.html" class="quicklink-item"
+          >Text-to-Speech <span class="arrow">↗</span></a
+        >
+        <a href="models.html" class="quicklink-item"
+          >AI Модели <span class="arrow">↗</span></a
+        >
+        <a href="sources.html" class="quicklink-item"
+          >Източници <span class="arrow">↗</span></a
+        >
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-left">
+        <p class="footer-logo">Изкуствен интелект</p>
+        <p class="footer-tagline">
+          Speech-to-Text и Text-to-Speech: Как ИИ слуша и говори.
+        </p>
+      </div>
+      <div class="footer-right">
+        <p class="footer-credit">© Всички права запазени 2026</p>
+      </div>
+      <div class="footer-stripe"></div>
+    </footer>
+
+    <script>
+      // ===== TAB SWITCHING =====
+      function switchTab(name) {
+        document
+          .querySelectorAll(".tab-panel")
+          .forEach((p) => p.classList.remove("active"));
+        document
+          .querySelectorAll(".tab-btn")
+          .forEach((b) => b.classList.remove("active"));
+        document.getElementById("tab-" + name).classList.add("active");
+        event.target.classList.add("active");
+      }
+
+      // ===== PIPELINE ANIMATION =====
+      function activatePipelineStep(stepId, timeout) {
+        setTimeout(() => {
+          document
+            .querySelectorAll(".pipe-step")
+            .forEach((s) => s.classList.remove("active-step"));
+          const el = document.getElementById(stepId);
+          if (el) el.classList.add("active-step");
+        }, timeout || 0);
+      }
+
+      // ===== STT =====
+      let recognition = null;
+      let isRecording = false;
+      let finalTranscript = "";
+
+      function initSTT() {
+        const SpeechRecognition =
+          window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (!SpeechRecognition) {
+          showError(
+            "sttError",
+            "Вашият браузър не поддържа Web Speech API. Моля, използвайте Chrome или Edge.",
+          );
+          return null;
+        }
+        const r = new SpeechRecognition();
+        r.continuous = true;
+        r.interimResults = true;
+        r.lang = document.getElementById("sttLang").value;
+        return r;
+      }
+
+      function toggleSTT() {
+        if (isRecording) {
+          stopSTT();
+        } else {
+          startSTT();
+        }
+      }
+
+      function startSTT() {
+        recognition = initSTT();
+        if (!recognition) return;
+
+        recognition.lang = document.getElementById("sttLang").value;
+
+        recognition.onstart = () => {
+          isRecording = true;
+          setSTTStatus("recording", "Слушам...");
+          document.getElementById("micBtn").classList.add("recording");
+          setWaveBars("waveBars", true);
+          activatePipelineStep("ps-mic", 0);
+          activatePipelineStep("ps-audio", 300);
+        };
+
+        recognition.onresult = (e) => {
+          activatePipelineStep("ps-asr", 0);
+          let interim = "";
+          finalTranscript = "";
+          for (let i = 0; i < e.results.length; i++) {
+            const t = e.results[i][0].transcript;
+            if (e.results[i].isFinal) {
+              finalTranscript += t + " ";
+              const conf = Math.round(e.results[i][0].confidence * 100);
+              if (conf > 0)
+                document.getElementById("confidence").textContent = conf + "%";
+            } else {
+              interim = t;
+            }
+          }
+          document.getElementById("sttInterim").textContent = interim
+            ? "..." + interim
+            : "";
+          updateSTTOutput(finalTranscript, interim);
+          activatePipelineStep("ps-text", 200);
+          updateStats(finalTranscript + interim);
+        };
+
+        recognition.onerror = (e) => {
+          if (e.error === "not-allowed") {
+            showError(
+              "sttError",
+              "Достъпът до микрофона е отказан. Моля, разрешете достъп в настройките на браузъра.",
+            );
+          } else if (e.error !== "no-speech") {
+            showError("sttError", "Грешка: " + e.error);
+          }
+          stopSTT();
+        };
+
+        recognition.onend = () => {
+          if (isRecording) recognition.start();
+        };
+
+        recognition.start();
+      }
+
+      function stopSTT() {
+        isRecording = false;
+        if (recognition) {
+          recognition.stop();
+          recognition = null;
+        }
+        setSTTStatus("idle", "Готов за запис");
+        document.getElementById("micBtn").classList.remove("recording");
+        setWaveBars("waveBars", false);
+        document.getElementById("sttInterim").textContent = "";
+        document
+          .querySelectorAll(".pipe-step")
+          .forEach((s) => s.classList.remove("active-step"));
+      }
+
+      function setSTTStatus(type, text) {
+        const el = document.getElementById("sttStatus");
+        el.className = "demo-status " + type;
+        document.getElementById("sttStatusText").textContent = text;
+      }
+
+      function updateSTTOutput(final, interim) {
+        const el = document.getElementById("sttOutput");
+        const text =
+          final +
+          (interim
+            ? '<span style="color:var(--gray-muted)">' + interim + "</span>"
+            : "");
+        el.innerHTML =
+          text ||
+          '<span style="color: var(--gray-muted); font-style: italic;">Вашата реч ще се появи тук...</span>';
+        document.getElementById("charCount").textContent =
+          (final + (interim || "")).length + " знака";
+      }
+
+      function updateStats(text) {
+        const words = text
+          .trim()
+          .split(/\s+/)
+          .filter((w) => w.length > 0);
+        document.getElementById("wordCount").textContent = words.length;
+        const sents = text.split(/[.!?।]+/).filter((s) => s.trim().length > 0);
+        document.getElementById("sentCount").textContent = sents.length;
+      }
+
+      function copyTranscript() {
+        navigator.clipboard.writeText(finalTranscript).then(() => {
+          const btn = event.target;
+          btn.textContent = "Копирано!";
+          setTimeout(() => (btn.textContent = "Копирай"), 1500);
+        });
+      }
+
+      function clearTranscript() {
+        finalTranscript = "";
+        updateSTTOutput("", "");
+        document.getElementById("wordCount").textContent = "0";
+        document.getElementById("sentCount").textContent = "0";
+        document.getElementById("confidence").textContent = "—";
+      }
+
+      // ===== TTS =====
+      let synth = window.speechSynthesis;
+      let voices = [];
+      let selectedVoiceIndex = 0;
+      let ttsUtterance = null;
+
+      function loadVoices() {
+        voices = synth.getVoices();
+        const grid = document.getElementById("voiceGrid");
+        if (!voices.length) {
+          grid.innerHTML =
+            '<div style="color: var(--gray-muted); font-size: 13px; grid-column: 1/-1; padding: 8px;">Няма налични гласове. Проверете настройките на ОС.</div>';
+          return;
+        }
+
+        // Prefer Bulgarian, then English
+        const preferred = voices.filter(
+          (v) =>
+            v.lang.startsWith("bg") ||
+            v.lang.startsWith("en") ||
+            v.lang.startsWith("de"),
+        );
+        const show =
+          preferred.length > 0 ? preferred.slice(0, 9) : voices.slice(0, 9);
+
+        grid.innerHTML = "";
+        show.forEach((v, i) => {
+          const card = document.createElement("div");
+          card.className = "voice-card" + (i === 0 ? " selected" : "");
+          card.innerHTML = `<span class="voice-name">${v.name.length > 22 ? v.name.slice(0, 22) + "…" : v.name}</span><span class="voice-lang">${v.lang}</span>`;
+          card.onclick = () => {
+            document
+              .querySelectorAll(".voice-card")
+              .forEach((c) => c.classList.remove("selected"));
+            card.classList.add("selected");
+            selectedVoiceIndex = voices.indexOf(v);
+          };
+          grid.appendChild(card);
+        });
+      }
+
+      synth.onvoiceschanged = loadVoices;
+      setTimeout(loadVoices, 500);
+
+      function updateTTSCount() {
+        const t = document.getElementById("ttsInput").value;
+        document.getElementById("ttsCharCount").textContent =
+          t.length + " знака";
+      }
+
+      document
+        .getElementById("ttsInput")
+        .addEventListener("input", updateTTSCount);
+      updateTTSCount();
+
+      function loadSample(lang) {
+        const samples = {
+          bg: "Изкуственият интелект е революционна технология, която позволява на компютрите да разбират и генерират човешка реч. Speech-to-Text разпознава говорен език, а Text-to-Speech го синтезира обратно.",
+          en: "Artificial intelligence is a revolutionary technology that enables computers to understand and generate human speech. Speech recognition converts spoken language to text, while synthesis converts it back.",
+        };
+        document.getElementById("ttsInput").value = samples[lang];
+        updateTTSCount();
+      }
+
+      function speakText() {
+        synth.cancel();
+        const text = document.getElementById("ttsInput").value.trim();
+        if (!text) return;
+
+        activatePipelineStep("ps-tts", 0);
+
+        const utt = new SpeechSynthesisUtterance(text);
+        if (voices[selectedVoiceIndex]) utt.voice = voices[selectedVoiceIndex];
+        utt.rate = parseFloat(document.getElementById("rateSlider").value);
+        utt.pitch = parseFloat(document.getElementById("pitchSlider").value);
+
+        const words = text.split(" ");
+        let wordIdx = 0;
+
+        utt.onstart = () => {
+          setTTSStatus("processing", "Синтезирам...");
+          document.getElementById("ttsStopBtn").disabled = false;
+          document.getElementById("ttsProgress").style.width = "10%";
+        };
+
+        utt.onboundary = (e) => {
+          if (e.name === "word") {
+            wordIdx++;
+            const prog = Math.min(95, (wordIdx / words.length) * 100);
+            document.getElementById("ttsProgress").style.width = prog + "%";
+            const spoken = words.slice(0, wordIdx).join(" ");
+            const rest = words.slice(wordIdx).join(" ");
+            document.getElementById("ttsHighlight").innerHTML =
+              `<span style="font-weight:700">${spoken}</span>` +
+              (rest
+                ? ` <span style="color:var(--gray-muted)">${rest}</span>`
+                : "");
+          }
+          activatePipelineStep("ps-out", 0);
+        };
+
+        utt.onend = () => {
+          setTTSStatus("success", "Завършено");
+          document.getElementById("ttsProgress").style.width = "100%";
+          document.getElementById("ttsStopBtn").disabled = true;
+          setTimeout(() => {
+            setTTSStatus("idle", "Готов");
+            document.getElementById("ttsProgress").style.width = "0%";
+            document
+              .querySelectorAll(".pipe-step")
+              .forEach((s) => s.classList.remove("active-step"));
+          }, 2000);
+        };
+
+        utt.onerror = () => setTTSStatus("idle", "Грешка при синтез");
+
+        synth.speak(utt);
+        ttsUtterance = utt;
+      }
+
+      function stopSpeech() {
+        synth.cancel();
+        setTTSStatus("idle", "Спряно");
+        document.getElementById("ttsStopBtn").disabled = true;
+        document.getElementById("ttsProgress").style.width = "0%";
+        document
+          .querySelectorAll(".pipe-step")
+          .forEach((s) => s.classList.remove("active-step"));
+      }
+
+      function setTTSStatus(type, text) {
+        const el = document.getElementById("ttsStatus");
+        el.className = "demo-status " + type;
+        document.getElementById("ttsStatusText").textContent = text;
+      }
+
+      // ===== FULL CYCLE =====
+      let fullRecognition = null;
+      let fullIsRecording = false;
+      let fullHistory = [];
+
+      function toggleFullCycle() {
+        if (fullIsRecording) stopFullCycle();
+        else startFullCycle();
+      }
+
+      function startFullCycle() {
+        const SpeechRecognition =
+          window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (!SpeechRecognition) {
+          alert("Web Speech API не се поддържа. Използвайте Chrome или Edge.");
+          return;
+        }
+        synth.cancel();
+        fullRecognition = new SpeechRecognition();
+        fullRecognition.lang = document.getElementById("fullLang").value;
+        fullRecognition.continuous = false;
+        fullRecognition.interimResults = true;
+
+        fullRecognition.onstart = () => {
+          fullIsRecording = true;
+          document.getElementById("fullMicBtn").classList.add("recording");
+          setFullStatus("recording", "Слушам...");
+          setWaveBars("fullWaveBars", true);
+          activateFP(1);
+        };
+
+        fullRecognition.onresult = (e) => {
+          activateFP(2);
+          let interim = "";
+          let final = "";
+          for (let i = 0; i < e.results.length; i++) {
+            if (e.results[i].isFinal) final += e.results[i][0].transcript;
+            else interim += e.results[i][0].transcript;
+          }
+          const display = final || interim;
+          document.getElementById("fullSTTOutput").innerHTML = display
+            ? display
+            : '<span style="color: var(--gray-muted); font-style: italic;">Речта ви ще се появи тук...</span>';
+
+          if (final) {
+            activateFP(3);
+            setTimeout(() => processTTS(final), 400);
+          }
+        };
+
+        fullRecognition.onend = () => {
+          fullIsRecording = false;
+          document.getElementById("fullMicBtn").classList.remove("recording");
+          setWaveBars("fullWaveBars", false);
+        };
+
+        fullRecognition.onerror = () => {
+          stopFullCycle();
+        };
+
+        fullRecognition.start();
+      }
+
+      function stopFullCycle() {
+        fullIsRecording = false;
+        if (fullRecognition) {
+          fullRecognition.stop();
+          fullRecognition = null;
+        }
+        document.getElementById("fullMicBtn").classList.remove("recording");
+        setFullStatus("idle", "Натиснете микрофона за начало");
+        setWaveBars("fullWaveBars", false);
+      }
+
+      function processTTS(text) {
+        activateFP(4);
+        setFullStatus("processing", "Синтезирам...");
+        document.getElementById("fullTTSOutput").innerHTML = text;
+
+        const utt = new SpeechSynthesisUtterance(text);
+        utt.lang = document.getElementById("fullLang").value;
+        if (voices.length > 0) {
+          const langCode = document
+            .getElementById("fullLang")
+            .value.split("-")[0];
+          const match = voices.find((v) => v.lang.startsWith(langCode));
+          if (match) utt.voice = match;
+        }
+
+        utt.onstart = () => activateFP(5);
+        utt.onend = () => {
+          setFullStatus(
+            "success",
+            "Готово! Натиснете микрофона за продължение.",
+          );
+          addToHistory(text);
+          setTimeout(() => {
+            setFullStatus("idle", "Натиснете микрофона за начало");
+            document
+              .querySelectorAll("#fp-1,#fp-2,#fp-3,#fp-4,#fp-5")
+              .forEach((s) => s.classList.remove("active-step"));
+          }, 2500);
+        };
+
+        synth.speak(utt);
+      }
+
+      function addToHistory(text) {
+        const now = new Date().toLocaleTimeString("bg-BG", {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        });
+        fullHistory.unshift({ text, time: now });
+        const hist = document.getElementById("cycleHistory");
+        hist.innerHTML = fullHistory
+          .map(
+            (h) =>
+              `<div style="padding: 10px 12px; border-bottom: 1px solid var(--border); display:flex; gap:10px; align-items:baseline;">
+      <span style="font-family:'Courier New';font-size:10px;color:var(--gray-muted);flex-shrink:0;">${h.time}</span>
+      <span style="font-size:13px;">${h.text}</span>
+    </div>`,
+          )
+          .join("");
+      }
+
+      function clearFullCycle() {
+        fullHistory = [];
+        document.getElementById("cycleHistory").innerHTML =
+          '<div style="padding: 12px; color: var(--gray-muted); font-size: 13px; font-style: italic;">Историята ще се появи тук...</div>';
+        document.getElementById("fullSTTOutput").innerHTML =
+          '<span style="color: var(--gray-muted); font-style: italic;">Речта ви ще се появи тук...</span>';
+        document.getElementById("fullTTSOutput").innerHTML =
+          '<span style="color: var(--gray-muted); font-style: italic;">Текстът ще бъде изречен автоматично...</span>';
+      }
+
+      function setFullStatus(type, text) {
+        const el = document.getElementById("fullStatus");
+        el.className = "demo-status " + type;
+        document.getElementById("fullStatusText").textContent = text;
+      }
+
+      function activateFP(num) {
+        document
+          .querySelectorAll("#fp-1,#fp-2,#fp-3,#fp-4,#fp-5")
+          .forEach((s) => s.classList.remove("active-step"));
+        const el = document.getElementById("fp-" + num);
+        if (el) el.classList.add("active-step");
+      }
+
+      // ===== UTILS =====
+      function setWaveBars(id, active) {
+        const bars = document.querySelectorAll("#" + id + " .wave-bar");
+        bars.forEach((b) => {
+          if (active) b.classList.add("active");
+          else {
+            b.classList.remove("active");
+            b.style.height = "6px";
+          }
+        });
+      }
+
+      function showError(id, msg) {
+        const el = document.getElementById(id);
+        if (el) {
+          el.textContent = msg;
+          el.style.display = "block";
+        }
+      }
+    </script>
+  </body>
+</html>
